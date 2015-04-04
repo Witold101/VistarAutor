@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Setup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>НАСТРОЙКИ</h3>
+<table>
+    <tr><td><h4>Настройки пользователей</h4></td></tr>
+    <tr><td>@Html.ActionLink("Редактирование установок пользователей","SetupListEmployee","Home")</td></tr>
+    <tr><td><h4>Начальные установки</h4></td></tr>
+    <tr><td>@Html.ActionLink("Отделы", "Index", "Departments")</td></tr>
+    <tr><td>@Html.ActionLink("Должности", "Index", "Positions")</td></tr>
+    <tr><td>@Html.ActionLink("Страны", "SetupListEmployee", "Home")</td></tr>
+    <tr><td>@Html.ActionLink("Типы телефонов", "SetupListEmployee", "Home")</td></tr>
+    <tr><td></td></tr>
+</table>
+
