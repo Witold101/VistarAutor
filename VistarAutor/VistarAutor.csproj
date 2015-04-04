@@ -163,6 +163,7 @@
     <Compile Include="Controllers\Main\DepartmentsController.cs" />
     <Compile Include="Controllers\Main\HomeController.cs" />
     <Compile Include="Controllers\Account\ManageController.cs" />
+    <Compile Include="Controllers\Main\PhoneTypesController.cs" />
     <Compile Include="Controllers\Main\PositionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,6 +181,8 @@
     <Compile Include="Models\Main\Employee.cs" />
     <Compile Include="Models\Main\EmployeeContext.cs" />
     <Compile Include="Models\Main\EmployeeMail.cs" />
+    <Compile Include="Models\Main\PhoneType.cs" />
+    <Compile Include="Models\Main\PhoneTypeContext.cs" />
     <Compile Include="Models\Main\Position.cs" />
     <Compile Include="Models\Main\PositionContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -256,6 +259,10 @@
     <Content Include="Views\Positions\Delete.cshtml" />
     <Content Include="Views\Positions\Edit.cshtml" />
     <Content Include="Views\Positions\Index.cshtml" />
+    <Content Include="Views\PhoneTypes\Create.cshtml" />
+    <Content Include="Views\PhoneTypes\Delete.cshtml" />
+    <Content Include="Views\PhoneTypes\Edit.cshtml" />
+    <Content Include="Views\PhoneTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
