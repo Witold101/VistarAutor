@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Account\AspNetRolesController.cs" />
+    <Compile Include="Controllers\Client\StatusesController.cs" />
     <Compile Include="Controllers\Client\TypeClientsController.cs" />
     <Compile Include="Controllers\CountryCodesController.cs" />
     <Compile Include="Controllers\Main\DepartmentsController.cs" />
@@ -175,6 +176,8 @@
     <Compile Include="Models\Account\AspNetRoleContext.cs" />
     <Compile Include="Models\Account\IdentityModels.cs" />
     <Compile Include="Models\Account\ManageViewModels.cs" />
+    <Compile Include="Models\Client\Statuse.cs" />
+    <Compile Include="Models\Client\StatuseContext.cs" />
     <Compile Include="Models\Client\TypeClient.cs" />
     <Compile Include="Models\Client\TypeClientContext.cs" />
     <Compile Include="Models\GlobalStrings.cs" />
@@ -277,6 +280,10 @@
     <Content Include="Views\TypeClients\Delete.cshtml" />
     <Content Include="Views\TypeClients\Edit.cshtml" />
     <Content Include="Views\TypeClients\Index.cshtml" />
+    <Content Include="Views\Statuses\Create.cshtml" />
+    <Content Include="Views\Statuses\Delete.cshtml" />
+    <Content Include="Views\Statuses\Edit.cshtml" />
+    <Content Include="Views\Statuses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
