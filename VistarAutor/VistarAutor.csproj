@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Account\AspNetRolesController.cs" />
+    <Compile Include="Controllers\CountryCodesController.cs" />
     <Compile Include="Controllers\Main\DepartmentsController.cs" />
     <Compile Include="Controllers\Main\HomeController.cs" />
     <Compile Include="Controllers\Account\ManageController.cs" />
@@ -176,6 +177,8 @@
     <Compile Include="Models\GlobalStrings.cs" />
     <Compile Include="Models\Main\AspNetUser.cs" />
     <Compile Include="Models\Main\AspNetUserContext.cs" />
+    <Compile Include="Models\Main\CountryCode.cs" />
+    <Compile Include="Models\Main\CountryCodeContext.cs" />
     <Compile Include="Models\Main\Department.cs" />
     <Compile Include="Models\Main\DepartmentContext.cs" />
     <Compile Include="Models\Main\Employee.cs" />
@@ -263,6 +266,10 @@
     <Content Include="Views\PhoneTypes\Delete.cshtml" />
     <Content Include="Views\PhoneTypes\Edit.cshtml" />
     <Content Include="Views\PhoneTypes\Index.cshtml" />
+    <Content Include="Views\CountryCodes\Create.cshtml" />
+    <Content Include="Views\CountryCodes\Delete.cshtml" />
+    <Content Include="Views\CountryCodes\Edit.cshtml" />
+    <Content Include="Views\CountryCodes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
