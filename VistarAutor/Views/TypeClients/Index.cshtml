@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VistarAutor.Models.Main.Position>
+﻿@model IEnumerable<VistarAutor.Models.Client.TypeClient>
 
 @{
     ViewBag.Title = "Список";
@@ -8,12 +8,12 @@
 <h3>Список</h3>
 
 <p>
-    @Html.ActionLink("Создать новую должность", "Create")
+    @Html.ActionLink("Создать новый тип клиента", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.Label("Наименование должностей:")
+            @Html.Label("Наименование типа клиента")
         </th>
         <th></th>
     </tr>
