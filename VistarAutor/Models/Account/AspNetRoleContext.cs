@@ -19,6 +19,7 @@ namespace VistarAutor.Models.Account
         public DbSet<Department> Departments { get; set; }
         public DbSet<Position> Positions { get; set; }
         
+        //Возвращает Employee по id либо null
         public Employee GetEmployee(int? id)
         {
             if (id != null||Employees.Find(id)!=null)
@@ -43,16 +44,6 @@ namespace VistarAutor.Models.Account
                     employee.AspNetUser = (from rezult in AspNetUsers
                         where rezult.Id == employee.AspNetUserId
                         select rezult).First();
-
-                    //******************************************
-                    //ApplicationDbContext db = new ApplicationDbContext();
-                    //employee.AspNetUser.AspNetRoles =
-                    //    (ICollection<AspNetRole>) (from r in db.Roles
-                    //    where r.Id == employee.AspNetUserId
-                    //    select r).ToList();
-                   
-          
-                    //*********************************************
                 }
                 return employee;
             }

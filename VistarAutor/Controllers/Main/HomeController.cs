@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -47,6 +48,24 @@ namespace VistarAutor.Controllers
         {
             List<Employee> employees = db.GetListEmployees();
             return View(employees);
+        }
+
+        [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
+        public ActionResult EditEmployee(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = db.GetEmployee(id);
+            if (employee != null)
+            {
+                return View(employee);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
         }
 
         public ActionResult SetupEmployee()

@@ -8,6 +8,7 @@ namespace VistarAutor.Models.Client
 {
     public class StatuseContext:DbContext
     {
+        public StatuseContext() : base("VistarDb") { }
         public DbSet<Statuse> Statuses { get; set; }
     }
 }

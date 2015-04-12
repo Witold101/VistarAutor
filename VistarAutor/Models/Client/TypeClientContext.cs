@@ -8,9 +8,7 @@ namespace VistarAutor.Models.Client
 {
     public class TypeClientContext:DbContext
     {
-        public TypeClientContext()
-            : base("VistarDb")
-        { }
+        public TypeClientContext(): base("VistarDb") { }
         public DbSet<TypeClient> TypeClients { get; set; }
     }
 }

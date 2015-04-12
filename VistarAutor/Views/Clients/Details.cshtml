@@ -1,0 +1,42 @@
+﻿@model VistarAutor.Models.Client.Client
+
+@{
+    ViewBag.Title = "Карточка клиента";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>@ViewBag.Title &nbsp;@Html.DisplayFor(model => model.FullName)</h4>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Краткое наименование:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("Полное наименование:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.Label("Дата регистрации:")
+        </dt>
+
+        <dd>
+           @Model.DateTimeRegistration.ToString("d")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
