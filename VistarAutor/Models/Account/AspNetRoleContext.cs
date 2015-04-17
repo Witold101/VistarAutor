@@ -22,29 +22,11 @@ namespace VistarAutor.Models.Account
         //Возвращает Employee по id либо null
         public Employee GetEmployee(int? id)
         {
-            if (id != null||Employees.Find(id)!=null)
+            if (id != null || Employees.Find(id) != null)
             {
                 Employee employee = new Employee();
-                employee = Employees.Find(id);
-                
-                if (employee.DepartmentId != null)
-                {
-                    employee.Department = (from rezult in Departments
-                        where rezult.Id == employee.DepartmentId
-                        select rezult).First();
-                }
-                if (employee.PositionId != null)
-                {
-                    employee.Position = (from rezult in Positions
-                        where rezult.Id == employee.PositionId
-                        select rezult).First();
-                }
-                if (employee.AspNetUserId != null)
-                {
-                    employee.AspNetUser = (from rezult in AspNetUsers
-                        where rezult.Id == employee.AspNetUserId
-                        select rezult).First();
-                }
+                List<Employee> employees = Employees.Include(p => p.Department).Include(p => p.Position).Include(p=>p.AspNetUser).ToList();
+                employee = employees.Find(a => a.Id == id);
                 return employee;
             }
             else
@@ -53,7 +35,7 @@ namespace VistarAutor.Models.Account
             }
         }
 
-        public List<Employee> GetListEmployees()
+            public List<Employee> GetListEmployees()
         {
             return Employees.Include(p => p.AspNetUser).ToList();
         } 

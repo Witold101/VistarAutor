@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -60,12 +61,32 @@ namespace VistarAutor.Controllers
             Employee employee = db.GetEmployee(id);
             if (employee != null)
             {
+                ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", employee.DepartmentId);
+                ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name", employee.PositionId);
+                ViewBag.AspNetUserId = new SelectList(db.AspNetUsers, "Id", "Email", employee.AspNetUserId);
                 return View(employee);
             }
             else
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+        }
+        
+        [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEmployee([Bind(Include = "Id,Name,LastName,PersonNamber,Birthday,DayOfEmployment,DayOfDismissal,DepartmentId,PositionId,Photo,AspNetUserId")] Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(employee).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("SetupListEmployee");
+            }
+            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", employee.DepartmentId);
+            ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name", employee.PositionId);
+            ViewBag.AspNetUserId = new SelectList(db.AspNetUsers, "Id", "Email", employee.AspNetUserId);
+            return View(employee);
         }
 
         public ActionResult SetupEmployee()

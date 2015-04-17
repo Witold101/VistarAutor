@@ -160,9 +160,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Account\AspNetRolesController.cs" />
+    <Compile Include="Controllers\Client\ClientMailsController.cs" />
+    <Compile Include="Controllers\Client\ClientNotesController.cs" />
     <Compile Include="Controllers\Client\ClientsController.cs" />
     <Compile Include="Controllers\Client\StatusesController.cs" />
     <Compile Include="Controllers\Client\TypeClientsController.cs" />
+    <Compile Include="Controllers\Client\WebsController.cs" />
     <Compile Include="Controllers\CountryCodesController.cs" />
     <Compile Include="Controllers\Main\DepartmentsController.cs" />
     <Compile Include="Controllers\Main\HomeController.cs" />
@@ -179,11 +182,17 @@
     <Compile Include="Models\Account\ManageViewModels.cs" />
     <Compile Include="Models\Client\Client.cs" />
     <Compile Include="Models\Client\ClientContext.cs" />
+    <Compile Include="Models\Client\ClientMail.cs" />
+    <Compile Include="Models\Client\ClientMailContext.cs" />
+    <Compile Include="Models\Client\ClientNoteContext.cs" />
+    <Compile Include="Models\Client\ClientNote.cs" />
     <Compile Include="Models\Client\EnumTypeClient.cs" />
     <Compile Include="Models\Client\Statuse.cs" />
     <Compile Include="Models\Client\StatuseContext.cs" />
     <Compile Include="Models\Client\TypeClient.cs" />
     <Compile Include="Models\Client\TypeClientContext.cs" />
+    <Compile Include="Models\Client\Web.cs" />
+    <Compile Include="Models\Client\WebContext.cs" />
     <Compile Include="Models\GlobalStrings.cs" />
     <Compile Include="Models\Main\AspNetUser.cs" />
     <Compile Include="Models\Main\AspNetUserContext.cs" />
@@ -204,6 +213,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\StyleVit.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -294,6 +304,15 @@
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Home\EditEmployee.cshtml" />
+    <Content Include="Views\ClientMails\Create.cshtml" />
+    <Content Include="Views\ClientMails\Delete.cshtml" />
+    <Content Include="Views\ClientMails\Edit.cshtml" />
+    <Content Include="Views\Webs\Create.cshtml" />
+    <Content Include="Views\Webs\Delete.cshtml" />
+    <Content Include="Views\Webs\Edit.cshtml" />
+    <Content Include="Views\ClientNotes\Create.cshtml" />
+    <Content Include="Views\ClientNotes\Delete.cshtml" />
+    <Content Include="Views\ClientNotes\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

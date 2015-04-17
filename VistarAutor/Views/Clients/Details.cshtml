@@ -8,7 +8,7 @@
 <h4>@ViewBag.Title &nbsp;@Html.DisplayFor(model => model.FullName)</h4>
 
 <div>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.Label("Краткое наименование:")
@@ -31,12 +31,72 @@
         </dt>
 
         <dd>
-           @Model.DateTimeRegistration.ToString("d")
+            @Model.DateTimeRegistration.ToString("d")
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+    <table>
+        <tr>
+            <td><h4>e-mail</h4></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Создать", "Create", "ClientMails", new {id = Model.Id}, null)</td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.ClientMails)
+        {
+            <tr>
+                <td>@item.Mail</td>
+                <td>@Html.ActionLink("Edit", "Edit", "ClientMails", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientMails", new {id = item.Id}, null)</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <table>
+        <tr>
+            <td><h4>Web</h4></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Создать", "Create", "Webs", new {id = Model.Id}, null)</td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.Webs)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Webs", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "Webs", new {id = item.Id}, null)</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <table>
+        <tr>
+            <td><h4>Сообщения</h4></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Создать", "Create", "ClientNotes", new { id = Model.Id }, null)</td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.ClientNotes)
+        {
+            <tr>
+                <td>@item.DateTime</td>
+                <td>@item.Text</td>
+                <td>@Html.ActionLink("Edit", "Edit", "ClientNotes", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientNotes", new { id = item.Id }, null)</td>
+            </tr>
+        }
+    </table>
+</div>

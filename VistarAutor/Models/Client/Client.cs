@@ -20,5 +20,16 @@ namespace VistarAutor.Models.Client
         public TypeClient TypeClient { get; set; }
         public int StatuseId { get; set; }
         public Statuse Statuse { get; set; }
+
+        public ICollection<ClientMail> ClientMails { get; set; }
+        public ICollection<Web> Webs { get; set; }
+        public ICollection<ClientNote> ClientNotes { get; set; } 
+
+        public Client()
+        {
+            ClientMails=new List<ClientMail>();
+            Webs=new List<Web>();
+            ClientNotes=new List<ClientNote>();
+        }
     }
 }

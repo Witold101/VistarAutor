@@ -28,7 +28,7 @@ namespace VistarAutor.Controllers.Client
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Client.Client client = db.Clients.Find(id);
+            Models.Client.Client client = db.GetClient(id);
             if (client == null)
             {
                 return HttpNotFound();
