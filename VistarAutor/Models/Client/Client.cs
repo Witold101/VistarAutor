@@ -23,13 +23,15 @@ namespace VistarAutor.Models.Client
 
         public ICollection<ClientMail> ClientMails { get; set; }
         public ICollection<Web> Webs { get; set; }
-        public ICollection<ClientNote> ClientNotes { get; set; } 
+        public ICollection<ClientNote> ClientNotes { get; set; }
+        public ICollection<ClientPhone> ClientPhones { get; set; }
 
         public Client()
         {
             ClientMails=new List<ClientMail>();
             Webs=new List<Web>();
             ClientNotes=new List<ClientNote>();
+            ClientPhones = new List<ClientPhone>();
         }
     }
 }

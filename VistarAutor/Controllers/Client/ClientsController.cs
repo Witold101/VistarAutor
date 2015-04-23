@@ -17,8 +17,7 @@ namespace VistarAutor.Controllers.Client
         // GET: Clients
         public ActionResult Index()
         {
-            var clients = db.Clients.Include(c => c.Employee).Include(c => c.EnumTypeClient).Include(c => c.Statuse).Include(c => c.TypeClient);
-            return View(clients.ToList());
+            return View(db.GetClients());
         }
 
         // GET: Clients/Details/5

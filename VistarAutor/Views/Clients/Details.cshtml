@@ -100,3 +100,29 @@
         }
     </table>
 </div>
+<div>
+    <table>
+        <tr>
+            <td><h4>Телефоны</h4></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Создать", "Create","ClientPhones", new { id = Model.Id }, null)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.ClientPhones)
+        {
+            <tr>
+                <td>@item.PhoneType.NameType</td>
+                <td>@item.CountryCode.Name</td>
+                <td>@item.CityCod</td>
+                <td>@item.NamberPhone</td>
+                <td>@Html.ActionLink("Edit", "Edit", "ClientPhones", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientPhones", new { id = item.Id }, null)</td>
+            </tr>
+        }
+    </table>
+</div>

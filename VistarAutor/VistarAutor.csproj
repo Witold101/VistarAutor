@@ -162,6 +162,7 @@
     <Compile Include="Controllers\Account\AspNetRolesController.cs" />
     <Compile Include="Controllers\Client\ClientMailsController.cs" />
     <Compile Include="Controllers\Client\ClientNotesController.cs" />
+    <Compile Include="Controllers\Client\ClientPhonesController.cs" />
     <Compile Include="Controllers\Client\ClientsController.cs" />
     <Compile Include="Controllers\Client\StatusesController.cs" />
     <Compile Include="Controllers\Client\TypeClientsController.cs" />
@@ -186,6 +187,8 @@
     <Compile Include="Models\Client\ClientMailContext.cs" />
     <Compile Include="Models\Client\ClientNoteContext.cs" />
     <Compile Include="Models\Client\ClientNote.cs" />
+    <Compile Include="Models\Client\ClientPhone.cs" />
+    <Compile Include="Models\Client\ClientPhoneContext.cs" />
     <Compile Include="Models\Client\EnumTypeClient.cs" />
     <Compile Include="Models\Client\Statuse.cs" />
     <Compile Include="Models\Client\StatuseContext.cs" />
@@ -313,6 +316,9 @@
     <Content Include="Views\ClientNotes\Create.cshtml" />
     <Content Include="Views\ClientNotes\Delete.cshtml" />
     <Content Include="Views\ClientNotes\Edit.cshtml" />
+    <Content Include="Views\ClientPhones\Create.cshtml" />
+    <Content Include="Views\ClientPhones\Delete.cshtml" />
+    <Content Include="Views\ClientPhones\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

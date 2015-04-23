@@ -18,6 +18,9 @@ namespace VistarAutor.Models.Client
         public DbSet<ClientMail> ClientMails { get; set; }
         public DbSet<Web> Webs { get; set; }
         public DbSet<ClientNote> ClientNotes { get; set; }
+        public DbSet<ClientPhone> ClientPhones { get; set; }
+        public DbSet<CountryCode> CountryCodes { get; set; }
+        public DbSet<PhoneType> PhoneTypes { get; set; }
 
         public Client GetClient(int? id)
         {
@@ -28,6 +31,7 @@ namespace VistarAutor.Models.Client
                     .Include(p => p.Employee)
                     .Include(p => p.TypeClient)
                     .Include(p=>p.Statuse)
+                    .Include(p=>p.ClientPhones)
                     .ToList();
                 client=clients.Find(a => a.Id == id);
                 client.ClientMails = 
@@ -42,6 +46,11 @@ namespace VistarAutor.Models.Client
                         (from rezult in ClientNotes
                          where rezult.ClientId == id
                          select rezult).ToList();
+                client.ClientPhones =
+                    (from rezult in ClientPhones
+                     where rezult.ClientId == id
+                     select rezult).ToList();
+                
 
                 return client;
             }
@@ -49,6 +58,16 @@ namespace VistarAutor.Models.Client
             {
                 return null;
             }
+        }
+
+        public List<Client> GetClients()
+        {
+            return Clients.Include(c => c.Employee)
+                .Include(c => c.EnumTypeClient)
+                .Include(c => c.Statuse)
+                .Include(c => c.TypeClient)
+                .Include(c => c.ClientPhones)
+                .ToList();
         }
     }
 }
