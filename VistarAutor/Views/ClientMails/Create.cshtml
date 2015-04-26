@@ -1,11 +1,12 @@
-﻿@model VistarAutor.Models.Client.ClientMail
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Client.ClientMail
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h3>@GlobalStrings.CREATE</h3>
 
 @using (Html.BeginForm()) 
 {

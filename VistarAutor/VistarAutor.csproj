@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Account\AspNetRolesController.cs" />
+    <Compile Include="Controllers\Client\ClientAddressesController.cs" />
     <Compile Include="Controllers\Client\ClientMailsController.cs" />
     <Compile Include="Controllers\Client\ClientNotesController.cs" />
     <Compile Include="Controllers\Client\ClientPhonesController.cs" />
@@ -182,6 +183,8 @@
     <Compile Include="Models\Account\IdentityModels.cs" />
     <Compile Include="Models\Account\ManageViewModels.cs" />
     <Compile Include="Models\Client\Client.cs" />
+    <Compile Include="Models\Client\ClientAddresse.cs" />
+    <Compile Include="Models\Client\ClientAddresseContext.cs" />
     <Compile Include="Models\Client\ClientContext.cs" />
     <Compile Include="Models\Client\ClientMail.cs" />
     <Compile Include="Models\Client\ClientMailContext.cs" />
@@ -319,6 +322,9 @@
     <Content Include="Views\ClientPhones\Create.cshtml" />
     <Content Include="Views\ClientPhones\Delete.cshtml" />
     <Content Include="Views\ClientPhones\Edit.cshtml" />
+    <Content Include="Views\ClientAddresses\Create.cshtml" />
+    <Content Include="Views\ClientAddresses\Delete.cshtml" />
+    <Content Include="Views\ClientAddresses\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

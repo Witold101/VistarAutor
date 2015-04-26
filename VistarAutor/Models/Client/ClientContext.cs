@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -21,37 +22,16 @@ namespace VistarAutor.Models.Client
         public DbSet<ClientPhone> ClientPhones { get; set; }
         public DbSet<CountryCode> CountryCodes { get; set; }
         public DbSet<PhoneType> PhoneTypes { get; set; }
+        public DbSet<ClientAddresse> ClientAddresses { get; set; }
 
         public Client GetClient(int? id)
         {
             if (id != null || Clients.Find(id) != null)
             {
-                Client client = new Client();
-                List<Client> clients = Clients.Include(p => p.EnumTypeClient)
-                    .Include(p => p.Employee)
-                    .Include(p => p.TypeClient)
-                    .Include(p=>p.Statuse)
-                    .Include(p=>p.ClientPhones)
-                    .ToList();
-                client=clients.Find(a => a.Id == id);
-                client.ClientMails = 
-                    (from rezult in ClientMails
-                    where rezult.ClientId == id
-                    select rezult).ToList();
-                client.Webs =
-                        (from rezult in Webs
-                        where rezult.ClientId == id
-                        select rezult).ToList();
-                client.ClientNotes =
-                        (from rezult in ClientNotes
-                         where rezult.ClientId == id
-                         select rezult).ToList();
-                client.ClientPhones =
-                    (from rezult in ClientPhones
-                     where rezult.ClientId == id
-                     select rezult).ToList();
-                
-
+                Client client = GetClients().Find(c=>c.Id==id);
+                client.ClientPhones = ClientPhones.Include(c => c.CountryCode)
+                    .Include(c => c.PhoneType).ToList();
+                client.ClientAddresses = ClientAddresses.Include(c => c.CountryCode).ToList();
                 return client;
             }
             else
@@ -62,12 +42,19 @@ namespace VistarAutor.Models.Client
 
         public List<Client> GetClients()
         {
-            return Clients.Include(c => c.Employee)
+
+            List<Client> clients= Clients.Include(c => c.Employee)
                 .Include(c => c.EnumTypeClient)
                 .Include(c => c.Statuse)
                 .Include(c => c.TypeClient)
-                .Include(c => c.ClientPhones)
+                .Include(c=>c.ClientAddresses)
+                .Include(c=>c.ClientMails)
+                .Include(c=>c.ClientNotes)
+                .Include(c=>c.ClientPhones)
+                .Include(c=>c.Webs)
                 .ToList();
+
+            return clients;
         }
     }
 }

@@ -11,18 +11,17 @@ using VistarAutor.Models.Client;
 
 namespace VistarAutor.Controllers.Client
 {
-    public class ClientPhonesController : Controller
+    public class ClientAddressesController : Controller
     {
-        private ClientPhoneContext db = new ClientPhoneContext();
+        private ClientAddresseContext db = new ClientAddresseContext();
 
-        // GET: ClientPhones/Create
+        // GET: ClientAddresses/Create
         public ActionResult Create(int? id)
         {
             if (id != null)
             {
                 ViewBag.ClientId = id;
                 ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name");
-                ViewBag.PhoneTypeId = new SelectList(db.PhoneTypes, "Id", "NameType");
                 return View();
             }
             else
@@ -31,85 +30,83 @@ namespace VistarAutor.Controllers.Client
             }
         }
 
-        // POST: ClientPhones/Create
+        // POST: ClientAddresses/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,PhoneTypeId,CountryCodeId,CityCod,NamberPhone,ClientId,Main")] ClientPhone clientPhone)
+        public async Task<ActionResult> Create([Bind(Include = "Id,CountryCodeId,City,Addresse,PostCode,ClientId,Main")] ClientAddresse clientAddresse)
         {
             if (ModelState.IsValid)
             {
-                db.ClientPhones.Add(clientPhone);
+                db.ClientAddresses.Add(clientAddresse);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Details", "Clients", new { id = clientPhone.ClientId });
+                return RedirectToAction("Details", "Clients", new { id = clientAddresse.ClientId });
             }
-            ViewBag.ClientId = clientPhone.ClientId;
-            ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name", clientPhone.CountryCodeId);
-            ViewBag.PhoneTypeId = new SelectList(db.PhoneTypes, "Id", "NameType", clientPhone.PhoneTypeId);
-            return View(clientPhone);
+
+            ViewBag.ClientId = clientAddresse.ClientId;
+            ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name", clientAddresse.CountryCodeId);
+            return View(clientAddresse);
         }
 
-        // GET: ClientPhones/Edit/5
+        // GET: ClientAddresses/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClientPhone clientPhone = await db.ClientPhones.FindAsync(id);
-            if (clientPhone == null)
+            ClientAddresse clientAddresse = await db.ClientAddresses.FindAsync(id);
+            if (clientAddresse == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClientId = clientPhone.ClientId;
-            ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name", clientPhone.CountryCodeId);
-            ViewBag.PhoneTypeId = new SelectList(db.PhoneTypes, "Id", "NameType", clientPhone.PhoneTypeId);
-            return View(clientPhone);
+            ViewBag.ClientId = clientAddresse.ClientId;
+            ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name", clientAddresse.CountryCodeId);
+            return View(clientAddresse);
         }
 
-        // POST: ClientPhones/Edit/5
+        // POST: ClientAddresses/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,PhoneTypeId,CountryCodeId,CityCod,NamberPhone,ClientId,Main")] ClientPhone clientPhone)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,CountryCodeId,City,Addresse,PostCode,ClientId,Main")] ClientAddresse clientAddresse)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(clientPhone).State = EntityState.Modified;
+                db.Entry(clientAddresse).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Details", "Clients", new { id = clientPhone.ClientId });
+                return RedirectToAction("Details", "Clients", new { id = clientAddresse.ClientId });
             }
-            ViewBag.ClientId = clientPhone.ClientId;
-            ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name", clientPhone.CountryCodeId);
-            ViewBag.PhoneTypeId = new SelectList(db.PhoneTypes, "Id", "NameType", clientPhone.PhoneTypeId);
-            return View(clientPhone);
+            ViewBag.ClientId = clientAddresse.ClientId;
+            ViewBag.CountryCodeId = new SelectList(db.CountryCodes, "Id", "Name", clientAddresse.CountryCodeId);
+            return View(clientAddresse);
         }
 
-        // GET: ClientPhones/Delete/5
+        // GET: ClientAddresses/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClientPhone clientPhone = await db.ClientPhones.FindAsync(id);
-            if (clientPhone == null)
+            ClientAddresse clientAddresse = await db.ClientAddresses.FindAsync(id);
+            if (clientAddresse == null)
             {
                 return HttpNotFound();
             }
-            return View(clientPhone);
+            return View(clientAddresse);
         }
 
-        // POST: ClientPhones/Delete/5
+        // POST: ClientAddresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            ClientPhone clientPhone = await db.ClientPhones.FindAsync(id);
-            int? tempId = clientPhone.ClientId;
-            db.ClientPhones.Remove(clientPhone);
+            ClientAddresse clientAddresse = await db.ClientAddresses.FindAsync(id);
+            int? tempId = clientAddresse.ClientId;
+            db.ClientAddresses.Remove(clientAddresse);
             await db.SaveChangesAsync();
             return RedirectToAction("Details", "Clients", new { id = tempId });
         }

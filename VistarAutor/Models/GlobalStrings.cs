@@ -12,5 +12,6 @@ namespace VistarAutor.Models
         public const string GUEST = "guest";
 
         public const string BTL = "Назад к списку";
+        public const string CREATE = "Создать";
     }
 }

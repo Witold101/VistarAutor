@@ -25,6 +25,7 @@ namespace VistarAutor.Models.Client
         public ICollection<Web> Webs { get; set; }
         public ICollection<ClientNote> ClientNotes { get; set; }
         public ICollection<ClientPhone> ClientPhones { get; set; }
+        public ICollection<ClientAddresse> ClientAddresses { get; set; } 
 
         public Client()
         {
@@ -32,6 +33,7 @@ namespace VistarAutor.Models.Client
             Webs=new List<Web>();
             ClientNotes=new List<ClientNote>();
             ClientPhones = new List<ClientPhone>();
+            ClientAddresses=new List<ClientAddresse>();  
         }
     }
 }

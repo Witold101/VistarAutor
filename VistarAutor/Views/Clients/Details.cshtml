@@ -108,7 +108,7 @@
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink("Создать", "Create","ClientPhones", new { id = Model.Id }, null)</td>
+            <td>@Html.ActionLink("Создать", "Create", "ClientPhones", new {id = Model.Id}, null)</td>
             <td></td>
             <td></td>
             <td></td>
@@ -121,7 +121,35 @@
                 <td>@item.CountryCode.Name</td>
                 <td>@item.CityCod</td>
                 <td>@item.NamberPhone</td>
-                <td>@Html.ActionLink("Edit", "Edit", "ClientPhones", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientPhones", new { id = item.Id }, null)</td>
+                <td>@Html.ActionLink("Edit", "Edit", "ClientPhones", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientPhones", new {id = item.Id}, null)</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <table>
+        <tr>
+            <td><h4>Адреса</h4></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Создать", "Create", "ClientAddresses", new { id = Model.Id }, null)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.ClientAddresses)
+        {
+            <tr>
+                <td>@item.CountryCode.Name</td>
+                <td>@item.City</td>
+                <td>@item.Addresse</td>
+                <td>@item.PostCode</td>
+                <td>@item.Main</td>
+                <td>@Html.ActionLink("Edit", "Edit", "ClientAddresses", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientAddresses", new { id = item.Id }, null)</td>
             </tr>
         }
     </table>
