@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using VistarAutor.Models.Main;
+using VistarAutor.Models.Person;
 
 namespace VistarAutor.Models.Client
 {
@@ -23,15 +24,32 @@ namespace VistarAutor.Models.Client
         public DbSet<CountryCode> CountryCodes { get; set; }
         public DbSet<PhoneType> PhoneTypes { get; set; }
         public DbSet<ClientAddresse> ClientAddresses { get; set; }
+        public DbSet<MyPerson> MyPersons { get; set; }
+         
 
         public Client GetClient(int? id)
         {
-            if (id != null || Clients.Find(id) != null)
+            if (id != null && Clients.Find(id) != null)
             {
                 Client client = GetClients().Find(c=>c.Id==id);
-                client.ClientPhones = ClientPhones.Include(c => c.CountryCode)
-                    .Include(c => c.PhoneType).ToList();
-                client.ClientAddresses = ClientAddresses.Include(c => c.CountryCode).ToList();
+                client.ClientPhones = 
+                    ClientPhones.Include(c => c.CountryCode)
+                    .Include(c => c.PhoneType)
+                    .Include(c => c.Client)
+                    .ToList().
+                    FindAll(c=>c.ClientId==id);
+                client.ClientAddresses = 
+                    ClientAddresses.Include(c => c.CountryCode)
+                    .ToList()
+                    .FindAll(c=>c.ClientId==id);
+                client.MyPersons = 
+                    MyPersons.Include(c => c.Client)
+                    .Include(c => c.Department)
+                    .Include(c => c.PersonStatuse)
+                    .Include(c => c.PersonType)
+                    .Include(c => c.Position)
+                    .ToList()
+                    .FindAll(c => c.ClientId == id);
                 return client;
             }
             else
@@ -43,17 +61,17 @@ namespace VistarAutor.Models.Client
         public List<Client> GetClients()
         {
 
-            List<Client> clients= Clients.Include(c => c.Employee)
-                .Include(c => c.EnumTypeClient)
-                .Include(c => c.Statuse)
-                .Include(c => c.TypeClient)
-                .Include(c=>c.ClientAddresses)
-                .Include(c=>c.ClientMails)
-                .Include(c=>c.ClientNotes)
-                .Include(c=>c.ClientPhones)
-                .Include(c=>c.Webs)
-                .ToList();
-
+            List<Client> clients = Clients.Include(c => c.Employee)
+                 .Include(c => c.EnumTypeClient)
+                 .Include(c => c.Statuse)
+                 .Include(c => c.TypeClient)
+                 .Include(c => c.ClientAddresses)
+                 .Include(c => c.ClientMails)
+                 .Include(c => c.ClientNotes)
+                 .Include(c => c.ClientPhones)
+                 .Include(c => c.Webs)
+                 .ToList();
+           
             return clients;
         }
     }

@@ -174,6 +174,9 @@
     <Compile Include="Controllers\Account\ManageController.cs" />
     <Compile Include="Controllers\Main\PhoneTypesController.cs" />
     <Compile Include="Controllers\Main\PositionsController.cs" />
+    <Compile Include="Controllers\Person\MyPersonsController.cs" />
+    <Compile Include="Controllers\Person\PersonStatusesController.cs" />
+    <Compile Include="Controllers\Person\PersonTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,13 +216,20 @@
     <Compile Include="Models\Main\PhoneTypeContext.cs" />
     <Compile Include="Models\Main\Position.cs" />
     <Compile Include="Models\Main\PositionContext.cs" />
+    <Compile Include="Models\Person\MyPerson.cs" />
+    <Compile Include="Models\Person\MyPersonContext.cs" />
+    <Compile Include="Models\Person\PersonMail.cs" />
+    <Compile Include="Models\Person\PersonPhone.cs" />
+    <Compile Include="Models\Person\PersonStatuse.cs" />
+    <Compile Include="Models\Person\PersonStatuseContext.cs" />
+    <Compile Include="Models\Person\PersonType.cs" />
+    <Compile Include="Models\Person\PersonTypeContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\StyleVit.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -325,6 +335,17 @@
     <Content Include="Views\ClientAddresses\Create.cshtml" />
     <Content Include="Views\ClientAddresses\Delete.cshtml" />
     <Content Include="Views\ClientAddresses\Edit.cshtml" />
+    <Content Include="Views\PersonTypes\Create.cshtml" />
+    <Content Include="Views\PersonTypes\Delete.cshtml" />
+    <Content Include="Views\PersonTypes\Edit.cshtml" />
+    <Content Include="Views\PersonTypes\Index.cshtml" />
+    <Content Include="Views\PersonStatuses\Create.cshtml" />
+    <Content Include="Views\PersonStatuses\Delete.cshtml" />
+    <Content Include="Views\PersonStatuses\Edit.cshtml" />
+    <Content Include="Views\PersonStatuses\Index.cshtml" />
+    <Content Include="Views\MyPersons\Create.cshtml" />
+    <Content Include="Views\MyPersons\Delete.cshtml" />
+    <Content Include="Views\MyPersons\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

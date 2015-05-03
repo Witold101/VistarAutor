@@ -26,7 +26,7 @@ namespace VistarAutor
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/stylevit.css"));
+                      "~/Content/StyleVit.css"));
         }
     }
 }

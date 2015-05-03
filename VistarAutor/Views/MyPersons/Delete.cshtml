@@ -1,0 +1,114 @@
+﻿@using VistarAutor.Models
+@using VistarAutor.Models.Person
+@model VistarAutor.Models.Person.MyPerson
+
+@{
+    ViewBag.Title = GlobalStrings.DELL;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@GlobalStrings.DELL</h3>
+
+<div>
+    <h4>@Model.Name&nbsp;@Model.LastName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonStatuse.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonStatuse.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonNamber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonNamber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

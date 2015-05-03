@@ -1,4 +1,5 @@
-﻿@model VistarAutor.Models.Client.Client
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Client.Client
 
 @{
     ViewBag.Title = "Карточка клиента";
@@ -7,38 +8,69 @@
 
 <h4>@ViewBag.Title &nbsp;@Html.DisplayFor(model => model.FullName)</h4>
 
-<div>
-    <hr/>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.Label("Краткое наименование:")
-        </dt>
+<div class="row">
+    <div class="col-md-4">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.Label("Краткое наименование:")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.Label("Полное наименование:")
-        </dt>
+            <dt>
+                @Html.Label("Полное наименование:")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
 
-        <dt>
-            @Html.Label("Дата регистрации:")
-        </dt>
+            <dt>
+                @Html.Label("Дата регистрации:")
+            </dt>
 
-        <dd>
-            @Model.DateTimeRegistration.ToString("d")
-        </dd>
+            <dd>
+                @Model.DateTimeRegistration.ToString("d")
+            </dd>
 
-    </dl>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+        </dl>
+        <p>
+            @Html.ActionLink(GlobalStrings.EDIT, "Edit", new { id = Model.Id }) |
+            @Html.ActionLink(GlobalStrings.BTL, "Index")
+        </p>
+    </div>
+    <div class="col-md-8">
+        <table class="table-striped">
+            <tr>
+                <td><h5>@GlobalStrings.PERSONS</h5></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr style="font-size: 12px">
+                <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "MyPersons", new { id = Model.Id }, null)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (var item in Model.MyPersons)
+            {
+                <tr style="font-size: 12px">
+                    <td style="width: 10%">@item.Name &nbsp;@item.LastName</td>
+                    <td style="width: 10%">@item.Department.Name</td>
+                    <td style="width: 70%"></td>
+                    <td style="width: 10%">@Html.ActionLink(GlobalStrings.EDIT, "Edit", "MyPersons", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "MyPersons", new {id = item.Id}, null)</td>
+                </tr>
+                <tr style="font-size: 12px" >
+                    <td style="width: 10%">@GlobalStrings.NOTE</td>
+                    <td style="width: 90%" colspan="3">@item.Note</td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>
 <div>
     <table>
@@ -47,14 +79,14 @@
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink("Создать", "Create", "ClientMails", new {id = Model.Id}, null)</td>
+            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "ClientMails", new {id = Model.Id}, null)</td>
             <td></td>
         </tr>
         @foreach (var item in Model.ClientMails)
         {
             <tr>
                 <td>@item.Mail</td>
-                <td>@Html.ActionLink("Edit", "Edit", "ClientMails", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientMails", new {id = item.Id}, null)</td>
+                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientMails", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientMails", new {id = item.Id}, null)</td>
             </tr>
         }
     </table>
@@ -66,14 +98,14 @@
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink("Создать", "Create", "Webs", new {id = Model.Id}, null)</td>
+            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "Webs", new { id = Model.Id }, null)</td>
             <td></td>
         </tr>
         @foreach (var item in Model.Webs)
         {
             <tr>
                 <td>@item.Name</td>
-                <td>@Html.ActionLink("Edit", "Edit", "Webs", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "Webs", new {id = item.Id}, null)</td>
+                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "Webs", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "Webs", new {id = item.Id}, null)</td>
             </tr>
         }
     </table>
@@ -86,7 +118,7 @@
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink("Создать", "Create", "ClientNotes", new { id = Model.Id }, null)</td>
+            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "ClientNotes", new { id = Model.Id }, null)</td>
             <td></td>
             <td></td>
         </tr>
@@ -95,7 +127,7 @@
             <tr>
                 <td>@item.DateTime</td>
                 <td>@item.Text</td>
-                <td>@Html.ActionLink("Edit", "Edit", "ClientNotes", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientNotes", new { id = item.Id }, null)</td>
+                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientNotes", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientNotes", new { id = item.Id }, null)</td>
             </tr>
         }
     </table>
@@ -108,7 +140,7 @@
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink("Создать", "Create", "ClientPhones", new {id = Model.Id}, null)</td>
+            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "ClientPhones", new { id = Model.Id }, null)</td>
             <td></td>
             <td></td>
             <td></td>
@@ -121,7 +153,7 @@
                 <td>@item.CountryCode.Name</td>
                 <td>@item.CityCod</td>
                 <td>@item.NamberPhone</td>
-                <td>@Html.ActionLink("Edit", "Edit", "ClientPhones", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientPhones", new {id = item.Id}, null)</td>
+                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientPhones", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientPhones", new {id = item.Id}, null)</td>
             </tr>
         }
     </table>
@@ -134,7 +166,7 @@
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink("Создать", "Create", "ClientAddresses", new { id = Model.Id }, null)</td>
+            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "ClientAddresses", new { id = Model.Id }, null)</td>
             <td></td>
             <td></td>
             <td></td>
@@ -149,7 +181,7 @@
                 <td>@item.Addresse</td>
                 <td>@item.PostCode</td>
                 <td>@item.Main</td>
-                <td>@Html.ActionLink("Edit", "Edit", "ClientAddresses", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink("Delete", "Delete", "ClientAddresses", new { id = item.Id }, null)</td>
+                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientAddresses", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientAddresses", new { id = item.Id }, null)</td>
             </tr>
         }
     </table>

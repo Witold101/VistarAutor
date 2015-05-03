@@ -1,0 +1,32 @@
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Person.PersonType
+
+@{
+    ViewBag.Title = GlobalStrings.DELL;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@GlobalStrings.DELL</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label(GlobalStrings.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink(GlobalStrings.BTL, "Index")
+        </div>
+    }
+</div>

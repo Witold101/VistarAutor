@@ -15,5 +15,7 @@ namespace VistarAutor.Models.Client
         public DbSet<Client> Clients { get; set; }
 
         public DbSet<CountryCode> CountryCodes { get; set; }
+
+        public System.Data.Entity.DbSet<VistarAutor.Models.Person.PersonType> PersonTypes { get; set; }
     }
 }
