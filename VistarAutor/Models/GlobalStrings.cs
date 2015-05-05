@@ -15,7 +15,8 @@ namespace VistarAutor.Models
         public const string NAME = "Наименование";
         public const string PERSONS = "Сотрудники";
         public const string NOTE = "Описание";
-
+        public const string PHONES = "Телефоны";
+        public const string EMAILS = "E-mails";
         public const string BTL = "Назад к списку";
         public const string CREATE = "Создать";
         public const string EDIT = "Редактировать";

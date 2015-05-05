@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using VistarAutor.Models;
 using VistarAutor.Models.Main;
 
 namespace VistarAutor.Controllers.Main
 {
+    [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
     public class DepartmentsController : Controller
     {
         private DepartmentContext db = new DepartmentContext();

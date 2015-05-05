@@ -175,6 +175,8 @@
     <Compile Include="Controllers\Main\PhoneTypesController.cs" />
     <Compile Include="Controllers\Main\PositionsController.cs" />
     <Compile Include="Controllers\Person\MyPersonsController.cs" />
+    <Compile Include="Controllers\Person\PersonMailsController.cs" />
+    <Compile Include="Controllers\Person\PersonPhonesController.cs" />
     <Compile Include="Controllers\Person\PersonStatusesController.cs" />
     <Compile Include="Controllers\Person\PersonTypesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,8 +220,10 @@
     <Compile Include="Models\Main\PositionContext.cs" />
     <Compile Include="Models\Person\MyPerson.cs" />
     <Compile Include="Models\Person\MyPersonContext.cs" />
+    <Compile Include="Models\Person\PersonMailContext.cs" />
     <Compile Include="Models\Person\PersonMail.cs" />
     <Compile Include="Models\Person\PersonPhone.cs" />
+    <Compile Include="Models\Person\PersonPhoneContext.cs" />
     <Compile Include="Models\Person\PersonStatuse.cs" />
     <Compile Include="Models\Person\PersonStatuseContext.cs" />
     <Compile Include="Models\Person\PersonType.cs" />
@@ -346,6 +350,12 @@
     <Content Include="Views\MyPersons\Create.cshtml" />
     <Content Include="Views\MyPersons\Delete.cshtml" />
     <Content Include="Views\MyPersons\Edit.cshtml" />
+    <Content Include="Views\PersonMails\Create.cshtml" />
+    <Content Include="Views\PersonMails\Delete.cshtml" />
+    <Content Include="Views\PersonMails\Edit.cshtml" />
+    <Content Include="Views\PersonPhones\Create.cshtml" />
+    <Content Include="Views\PersonPhones\Delete.cshtml" />
+    <Content Include="Views\PersonPhones\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

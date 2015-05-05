@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using VistarAutor.Models;
 using VistarAutor.Models.Client;
 
 namespace VistarAutor.Controllers.Client
 {
+    [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
     public class ClientMailsController : Controller
     {
         private ClientMailContext db = new ClientMailContext();

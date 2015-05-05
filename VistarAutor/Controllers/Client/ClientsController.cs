@@ -6,10 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using VistarAutor.Models;
 using VistarAutor.Models.Client;
+using VistarAutor.Models.Person;
 
 namespace VistarAutor.Controllers.Client
 {
+    [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
     public class ClientsController : Controller
     {
         private ClientContext db = new ClientContext();
@@ -31,6 +34,15 @@ namespace VistarAutor.Controllers.Client
             if (client == null)
             {
                 return HttpNotFound();
+            }
+            foreach (MyPerson person in client.MyPersons)
+            {
+                person.PersonPhones = db.PersonPhones
+                    .Include(c=>c.CountryCode)
+                    .Include(c=>c.MyPerson)
+                    .Include(c=>c.PhoneType)
+                    .ToList()
+                    .FindAll(c=>c.MyPersonId==person.Id);
             }
             return View(client);
         }

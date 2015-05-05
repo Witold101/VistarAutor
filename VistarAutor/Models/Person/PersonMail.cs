@@ -10,7 +10,7 @@ namespace VistarAutor.Models.Person
         public int Id { get; set; }
         public string Mail { get; set; }
         public bool Main { get; set; }
-        public int PersonId { get; set; }
-        public MyPerson Person { get; set; }
+        public int MyPersonId { get; set; }
+        public MyPerson MyPerson { get; set; }
     }
 }

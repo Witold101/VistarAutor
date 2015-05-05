@@ -1,5 +1,5 @@
 ﻿@using VistarAutor.Models
-@model VistarAutor.Models.Client.ClientAddresse
+@model VistarAutor.Models.Person.PersonMail
 
 @{
     ViewBag.Title = GlobalStrings.DELL;
@@ -12,27 +12,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.Mail)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Addresse)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Addresse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostCode)
+            @Html.DisplayFor(model => model.Mail)
         </dd>
 
         <dt>
@@ -50,7 +34,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink(GlobalStrings.BTL, "Details", "Clients", new { id = @Model.ClientId }, null)
+            @Html.ActionLink(GlobalStrings.BTL, "Edit", "MyPersons", new { id = @Model.MyPersonId}, null)
         </div>
     }
 </div>

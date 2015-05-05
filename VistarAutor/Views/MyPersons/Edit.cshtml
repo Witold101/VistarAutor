@@ -1,112 +1,150 @@
-﻿@model VistarAutor.Models.Person.MyPerson
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Person.MyPerson
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = GlobalStrings.EDIT;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h4>@GlobalStrings.EDIT</h4>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>MyPerson</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PersonNamber, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PersonNamber, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PersonNamber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PersonNamber, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PersonNamber, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.PersonNamber, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Birthday, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Birthday, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Birthday, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Photo, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Photo, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Photo, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("DepartmentId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+                @Html.DropDownList("DepartmentId", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.DepartmentId, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PositionId, "PositionId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PositionId, "PositionId", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("PositionId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PositionId, "", new { @class = "text-danger" })
+                @Html.DropDownList("PositionId", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.PositionId, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PersonTypeId, "PersonTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PersonTypeId, "PersonTypeId", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("PersonTypeId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonTypeId, "", new { @class = "text-danger" })
+                @Html.DropDownList("PersonTypeId", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.PersonTypeId, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PersonStatuseId, "PersonStatuseId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PersonStatuseId, "PersonStatuseId", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("PersonStatuseId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonStatuseId, "", new { @class = "text-danger" })
+                @Html.DropDownList("PersonStatuseId", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.PersonStatuseId, "", new {@class = "text-danger"})
             </div>
         </div>
 
-        @Html.Hidden("ClientId", (int)@ViewBag.ClientId)
+        @Html.Hidden("ClientId", (int) @ViewBag.ClientId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Note, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Note, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Note, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default"/>
             </div>
         </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>@GlobalStrings.PHONES</td>
+                <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "PersonPhones", new {id = Model.Id}, null)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (var item in Model.PersonPhones)
+            {
+                <tr>
+                    <td>@item.PhoneType.NameType</td>
+                    <td>+@item.CountryCode.Code</td>
+                    <td>@item.CityCod</td>
+                    <td>@item.NamberPhone</td>
+                    <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "PersonPhones", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "PersonPhones", new { id = item.Id }, null)</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>@GlobalStrings.EMAILS</td>
+                <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "PersonMails", new { id = Model.Id }, null)</td>
+                <td></td>
+            </tr>
+            @foreach (var item in Model.PersonMails)
+            {
+                <tr>
+                    <td>@item.Mail</td>
+                    <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "PersonMails", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "PersonMails", new { id = item.Id }, null)</td>
+                    <td></td>
+                </tr>
+            }
+        </table>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(GlobalStrings.BTL, "Details", "Clients", new {id = @Model.ClientId}, null)
 </div>

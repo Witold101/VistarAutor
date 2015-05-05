@@ -26,13 +26,13 @@ namespace VistarAutor.Models.Person
         public Client.Client Client { get; set; }
         public string Note { get; set; }
 
-        //public ICollection<PersonMail> PersonMails { get; set; }
-        //public ICollection<PersonPhone> PersonPhones { get; set; }
+        public ICollection<PersonMail> PersonMails { get; set; }
+        public ICollection<PersonPhone> PersonPhones { get; set; }
 
         public MyPerson()
         {
-//            PersonMails = new List<PersonMail>();
-//            PersonPhones = new List<PersonPhone>();
+            PersonMails = new List<PersonMail>();
+            PersonPhones = new List<PersonPhone>();
         }
     }
 }

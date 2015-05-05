@@ -1,18 +1,18 @@
-﻿@model VistarAutor.Models.Person.MyPerson
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Person.MyPerson
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = GlobalStrings.CREATE;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h3>@GlobalStrings.CREATE</h3>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>MyPerson</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -106,5 +106,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(GlobalStrings.BTL, "Details", "Clients", new { id = @ViewBag.ClientId }, null)
 </div>

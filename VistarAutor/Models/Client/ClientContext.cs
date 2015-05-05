@@ -25,31 +25,34 @@ namespace VistarAutor.Models.Client
         public DbSet<PhoneType> PhoneTypes { get; set; }
         public DbSet<ClientAddresse> ClientAddresses { get; set; }
         public DbSet<MyPerson> MyPersons { get; set; }
-         
+        public DbSet<PersonPhone> PersonPhones { get; set; }
 
         public Client GetClient(int? id)
         {
             if (id != null && Clients.Find(id) != null)
             {
-                Client client = GetClients().Find(c=>c.Id==id);
-                client.ClientPhones = 
+                Client client = GetClients().Find(c => c.Id == id);
+                client.ClientPhones =
                     ClientPhones.Include(c => c.CountryCode)
-                    .Include(c => c.PhoneType)
-                    .Include(c => c.Client)
-                    .ToList().
-                    FindAll(c=>c.ClientId==id);
-                client.ClientAddresses = 
+                        .Include(c => c.PhoneType)
+                        .Include(c => c.Client)
+                        .ToList().
+                        FindAll(c => c.ClientId == id);
+                client.ClientAddresses =
                     ClientAddresses.Include(c => c.CountryCode)
-                    .ToList()
-                    .FindAll(c=>c.ClientId==id);
-                client.MyPersons = 
+                        .ToList()
+                        .FindAll(c => c.ClientId == id);
+                client.MyPersons =
                     MyPersons.Include(c => c.Client)
-                    .Include(c => c.Department)
-                    .Include(c => c.PersonStatuse)
-                    .Include(c => c.PersonType)
-                    .Include(c => c.Position)
-                    .ToList()
-                    .FindAll(c => c.ClientId == id);
+                        .Include(c => c.Department)
+                        .Include(c => c.PersonStatuse)
+                        .Include(c => c.PersonType)
+                        .Include(c => c.Position)
+                        .Include(c => c.PersonMails)
+                        .Include(c => c.PersonPhones)
+                        .ToList()
+                        .FindAll(c => c.ClientId == id);
+
                 return client;
             }
             else

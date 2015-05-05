@@ -14,9 +14,10 @@ namespace VistarAutor.Models.Person
         public bool Main { get; set; }
         public int PhoneTypeId { get; set; }
         public PhoneType PhoneType { get; set; }
-        public int PersonId { get; set; }
-        public MyPerson Person { get; set; }
+        public int MyPersonId { get; set; }
+        public MyPerson MyPerson { get; set; }
         public int CountryCodeId { get; set; }
         public CountryCode CountryCode { get; set; }
+
     }
 }

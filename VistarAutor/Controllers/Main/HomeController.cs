@@ -14,6 +14,7 @@ using VistarAutor.Models.Main;
 
 namespace VistarAutor.Controllers
 {
+    [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
     public class HomeController : Controller
     {
         private AspNetRoleContext db = new AspNetRoleContext();

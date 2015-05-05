@@ -8,105 +8,101 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using VistarAutor.Models;
-using VistarAutor.Models.Client;
+using VistarAutor.Models.Person;
 
-namespace VistarAutor.Controllers.Client
+namespace VistarAutor.Controllers.Person
 {
     [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
-    public class ClientNotesController : Controller
+    public class PersonMailsController : Controller
     {
-        private ClientNoteContext db = new ClientNoteContext();
-        
-        // GET: ClientNotes/Create
+        private PersonMailContext db = new PersonMailContext();
+
+        // GET: PersonMails/Create
         public ActionResult Create(int? id)
         {
-            if (id != null)
-            {
-                ViewBag.ClientId = id;
-                return View();
-            }
-            else
+            if (id == null && db.MyPersons.Find(id) == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.PersonId = id;
+            return View();
         }
 
-        // POST: ClientNotes/Create
+        // POST: PersonMails/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,DateTime,Text,ClientId")] ClientNote clientNote)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Mail,Main,MyPersonId")] PersonMail personMail)
         {
             if (ModelState.IsValid)
             {
-                db.ClientNotes.Add(clientNote);
+                db.PersonMails.Add(personMail);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Details", "Clients", new { id = clientNote.ClientId });
+                return RedirectToAction("Edit", "MyPersons", new { id = personMail.MyPersonId });
             }
-
-            ViewBag.ClientId =  clientNote.ClientId;
-            return View(clientNote);
+            ViewBag.PersonId = personMail.MyPersonId;
+            return View(personMail);
         }
 
-        // GET: ClientNotes/Edit/5
+        // GET: PersonMails/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClientNote clientNote = await db.ClientNotes.FindAsync(id);
-            if (clientNote == null)
+            PersonMail personMail = await db.PersonMails.FindAsync(id);
+            if (personMail == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClientId = clientNote.ClientId;
-            return View(clientNote);
+            ViewBag.PersonId = personMail.MyPersonId;
+            return View(personMail);
         }
 
-        // POST: ClientNotes/Edit/5
+        // POST: PersonMails/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,DateTime,Text,ClientId")] ClientNote clientNote)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Mail,Main,MyPersonId")] PersonMail personMail)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(clientNote).State = EntityState.Modified;
+                db.Entry(personMail).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Details", "Clients", new { id = clientNote.ClientId });
+                return RedirectToAction("Edit", "MyPersons", new { id = personMail.MyPersonId });
             }
-            ViewBag.ClientId = clientNote.ClientId;
-            return View(clientNote);
+            ViewBag.PersonId = personMail.MyPersonId;
+            return View(personMail);
         }
 
-        // GET: ClientNotes/Delete/5
+        // GET: PersonMails/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClientNote clientNote = await db.ClientNotes.FindAsync(id);
-            if (clientNote == null)
+            PersonMail personMail = await db.PersonMails.FindAsync(id);
+            if (personMail == null)
             {
                 return HttpNotFound();
             }
-            return View(clientNote);
+            return View(personMail);
         }
 
-        // POST: ClientNotes/Delete/5
+        // POST: PersonMails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            ClientNote clientNote = await db.ClientNotes.FindAsync(id);
-            int? tempId = clientNote.ClientId;
-            db.ClientNotes.Remove(clientNote);
+            PersonMail personMail = await db.PersonMails.FindAsync(id);
+            int temp = personMail.MyPersonId;
+            db.PersonMails.Remove(personMail);
             await db.SaveChangesAsync();
-            return RedirectToAction("Details", "Clients", new { id = tempId });
+            return RedirectToAction("Edit", "MyPersons", new { id = temp });
         }
 
         protected override void Dispose(bool disposing)

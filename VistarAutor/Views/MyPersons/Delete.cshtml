@@ -14,46 +14,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Client.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Department.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Department.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonStatuse.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PersonStatuse.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonType.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PersonType.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Position.Name)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
@@ -108,7 +68,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink(GlobalStrings.BTL, "Details", "Clients", new { id = @Model.ClientId }, null)
         </div>
     }
 </div>

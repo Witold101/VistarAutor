@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using VistarAutor.Models;
 using VistarAutor.Models.Person;
 
 namespace VistarAutor.Controllers.Person
 {
+    [Authorize(Roles = GlobalStrings.SUPER_ADMIN)]
     public class MyPersonsController : Controller
     {
         private MyPersonContext db = new MyPersonContext();
@@ -62,7 +64,7 @@ namespace VistarAutor.Controllers.Person
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MyPerson myPerson = await db.MyPersons.FindAsync(id);
+            MyPerson myPerson =  db.GePerson(id);
             if (myPerson == null)
             {
                 return HttpNotFound();
