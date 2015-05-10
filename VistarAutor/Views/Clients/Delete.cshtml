@@ -1,4 +1,5 @@
-﻿@model VistarAutor.Models.Client.Client
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Client.Client
 
 @{
     ViewBag.Title = "Delete";
@@ -43,7 +44,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink(GlobalStrings.BTL, "Index")
         </div>
     }
 </div>

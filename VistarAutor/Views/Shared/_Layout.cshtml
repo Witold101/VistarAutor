@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/scripts/jquery-2.1.3.min.js")
+    @Scripts.Render("~/scripts/jquery.validate.min.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body style="padding-bottom: 70px">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,12 +26,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Клиенты", "Index", "Clients")</li>
+                    <li>@Html.ActionLink(GlobalStrings.CONTACTS, "Index", "Clients")</li>
                     <li>@Html.ActionLink("О программе", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
                     <li>@if (User.IsInRole(GlobalStrings.SUPER_ADMIN))
                     {
-                        @Html.ActionLink("Настройки", "Setup", "Home")
+                        @Html.ActionLink(GlobalStrings.SETUP, "Setup", "Home")
                     }
                     </li>
                 </ul>

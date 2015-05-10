@@ -1,37 +1,35 @@
-﻿@model IEnumerable<VistarAutor.Models.Client.Client>
+﻿@using VistarAutor.Models
+@model IEnumerable<VistarAutor.Models.Client.Client>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = GlobalStrings.JURNAL_CLIENT;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Журнал клиентов</h3>
+<h3>@GlobalStrings.JURNAL_CLIENT</h3>
 
 <p>
-    @Html.ActionLink("Создать клиента", "Create")
+    @Html.ActionLink(GlobalStrings.CREATE, "Create")
 </p>
-<table class="table">
+<table class="table-striped" style="font-size: 14px">
     <tr>
         <th>
-            @Html.Label("Конрагент")
+            @Html.ActionLink(GlobalStrings.NAME, "Index", new { id = 1 })
         </th>
         <th>
-            @Html.Label("Полное наименование")
+            @Html.Label(GlobalStrings.NAME_FULL)
         </th>
         <th>
-            @Html.Label("Вид")
+            @Html.ActionLink(GlobalStrings.TYPE, "Index", new { id = 2 })
         </th>
         <th>
-            @Html.Label("Тип")
+            @Html.Label(GlobalStrings.DATE_REG)
         </th>
         <th>
-            @Html.Label("Дата реистрации")
+            @Html.Label(GlobalStrings.STATUS)
         </th>
         <th>
-            @Html.Label("Статус")
-        </th>
-        <th>
-            @Html.Label("Куратор")
+            @Html.ActionLink(GlobalStrings.KURATOR, "Index", new { id = 3 })
         </th>
         <th></th>
     </tr>
@@ -39,13 +37,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Details", new { id = item.Id },new {style="color: black"})
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnumTypeClient.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TypeClient.Name)
@@ -60,9 +55,7 @@
             @Html.DisplayFor(modelItem => item.Employee.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(GlobalStrings.DELL, "Delete", new { id=item.Id })
         </td>
     </tr>
 }

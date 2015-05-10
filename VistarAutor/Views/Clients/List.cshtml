@@ -1,0 +1,92 @@
+﻿@using VistarAutor.Models
+@model IEnumerable<VistarAutor.Models.Client.Client>
+
+
+@{
+    ViewBag.Title = GlobalStrings.CONTACTS;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="height: 48px">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-8"></div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <table class="table table-hover small">
+                    @foreach (var client in Model)
+                    {
+                        <tr style="background-color: powderblue">
+                            <td><i class="glyphicon glyphicon-home"></i></td>
+                            <td></td>
+                            <td>
+                                <strong>
+                                    @Html.ActionLink(client.Name, "List", new {id=client.Id}, new {style = "color:darkslategray"})
+                                </strong>
+                            </td>
+                            <td style="color: darkslategray">@client.FullName</td>
+                        </tr>
+                        foreach (var contact in client.MyPersons)
+                        {
+                            <tr>
+                                <td></td>
+                                <td><i class="glyphicon glyphicon-user"></i></td>
+                                <td>@Html.ActionLink(contact.Name + " " + contact.LastName, "List", null, new {style = "color: grey"})</td>
+                                <td></td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <p>Привет, я в Разделе 2.</p>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <p>Привет, я в Разделе 3.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="thumbnail" style="position: fixed; width: 50%" >
+            <div class="caption">
+                @ViewBag.ClientRez.Name;
+                @ViewBag.ClientRez.FullName;
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="background-color: white; position: fixed;top: 50px">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">@GlobalStrings.CONTACTS</a></li>
+        <li><a href="#tab2" data-toggle="tab">@GlobalStrings.LAST</a></li>
+        <li><a href="#tab3" data-toggle="tab">@GlobalStrings.SELECT</a></li>
+    </ul>
+    <form class="form-inline" style="position: fixed; top: 53px; left: 50%">
+        <!-- Split button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default">@GlobalStrings.SORT</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+        <input type="text" class="form-control" id="exampleInputName2" placeholder=@GlobalStrings.SERCH>
+        <button type="submit" class="btn">@GlobalStrings.SERCH</button>
+    </form>
+
+</div>
+

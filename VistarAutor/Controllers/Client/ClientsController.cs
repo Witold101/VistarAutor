@@ -18,9 +18,26 @@ namespace VistarAutor.Controllers.Client
         private ClientContext db = new ClientContext();
 
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.GetClients());
+            if (id == null)
+            {
+                return View(db.GetClients().OrderBy(c=>c.Name));
+            }
+            else
+            {
+                switch (id)
+                {
+                    case 1:
+                        return View(db.GetClients().OrderBy(c=>c.Name));
+                    case 2:
+                        return View(db.GetClients().OrderBy(c => c.TypeClient.Name));
+                    case 3:
+                        return View(db.GetClients().OrderBy(c => c.Employee.Name));
+                    default:
+                        return View(db.GetClients().OrderBy(c=>c.Name));
+                }
+            }
         }
 
         // GET: Clients/Details/5
@@ -141,6 +158,38 @@ namespace VistarAutor.Controllers.Client
             db.Clients.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult List(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Models.Client.Client client = db.GetClient(id);
+            if (client == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<Models.Client.Client> clients = db.GetClients().OrderBy(c=>c.Name).ToList();
+            ViewBag.ClientRez = client;
+            return View(clients);
+        }
+
+        public ActionResult PartialClient(int? id)
+        {
+            ViewBag.Message = "Это частичное представление.";
+            //id = 12;
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //Models.Client.Client client = db.GetClient(id);
+            //if (client == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            return PartialView();
         }
 
         protected override void Dispose(bool disposing)

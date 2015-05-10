@@ -65,15 +65,16 @@ namespace VistarAutor.Models.Client
         {
 
             List<Client> clients = Clients.Include(c => c.Employee)
-                 .Include(c => c.EnumTypeClient)
-                 .Include(c => c.Statuse)
-                 .Include(c => c.TypeClient)
-                 .Include(c => c.ClientAddresses)
-                 .Include(c => c.ClientMails)
-                 .Include(c => c.ClientNotes)
-                 .Include(c => c.ClientPhones)
-                 .Include(c => c.Webs)
-                 .ToList();
+                .Include(c => c.EnumTypeClient)
+                .Include(c => c.Statuse)
+                .Include(c => c.TypeClient)
+                .Include(c => c.ClientAddresses)
+                .Include(c => c.ClientMails)
+                .Include(c => c.ClientNotes)
+                .Include(c => c.ClientPhones)
+                .Include(c => c.Webs)
+                .Include(c => c.MyPersons)
+                .ToList();
            
             return clients;
         }

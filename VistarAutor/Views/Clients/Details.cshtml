@@ -1,9 +1,10 @@
-﻿@using VistarAutor.Models
+﻿@using System.Drawing
+@using VistarAutor.Models
 @using VistarAutor.Models.Person
 @model VistarAutor.Models.Client.Client
 
 @{
-    ViewBag.Title = "Карточка клиента";
+    ViewBag.Title = GlobalStrings.CARD_CLIENT;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,35 +15,22 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.Label("Краткое наименование:")
+                @Html.Label(GlobalStrings.NAME_SL)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-
-            <dt>
-                @Html.Label("Полное наименование:")
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FullName)
+                @Html.ActionLink(Model.Name, "Edit", new { id = Model.Id },new {style="color:black"})
             </dd>
 
         </dl>
         <p>
-            @Html.ActionLink(GlobalStrings.EDIT, "Edit", new { id = Model.Id }) |
             @Html.ActionLink(GlobalStrings.BTL, "Index")
         </p>
     </div>
     <div class="col-md-8">
         <table class="table-striped">
             <tr>
-                <td><h5>@GlobalStrings.PERSONS</h5></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="5"><h5>@GlobalStrings.PERSONS</h5></td>
                 <td style="font-size: 12px">@Html.ActionLink(GlobalStrings.CREATE, "Create", "MyPersons", new { id = Model.Id }, null)</td>
             </tr>
             <tr style="font-size: 12px">
@@ -63,8 +51,8 @@
                     <td style="width: 10%;padding: 5px">@person.Position.Name</td>
                     <td style="width: 25%; padding: 5px">@if (person.PersonPhones.Count(c=>c.Main==true)>0)
                                                          {<text>+</text>
-                                                             @person.PersonPhones.First(c => c.Main == true).CountryCode.Code <text>&nbsp;</text>
-                                                             @person.PersonPhones.First(c => c.Main == true).CityCod <text>&nbsp;</text>
+                                                             @person.PersonPhones.First(c => c.Main == true).CountryCode.Code<text></text>
+                                                             @person.PersonPhones.First(c => c.Main == true).CityCod <text></text>
                                                              @person.PersonPhones.First(c => c.Main == true).NamberPhone
                                                          }
                                                          </td>
@@ -85,18 +73,18 @@
 <div>
     <table>
         <tr>
-            <td><h4>e-mail</h4></td>
+            <td><h4>@GlobalStrings.EMAILS</h4></td>
             <td></td>
         </tr>
         <tr>
-            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "ClientMails", new {id = Model.Id}, null)</td>
+            <td>@Html.ActionLink(GlobalStrings.CREATE, "Create", "ClientMails", new { id = Model.Id, style = "color: red;" }, null)</td>
             <td></td>
         </tr>
         @foreach (var item in Model.ClientMails)
         {
             <tr>
-                <td>@item.Mail</td>
-                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientMails", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientMails", new {id = item.Id}, null)</td>
+                <td>@Html.ActionLink(item.Mail, "Edit", "ClientMails", new { id = item.Id }, new { style = "color: black;" })</td>
+                <td>&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientMails", new { id = item.Id }, null)</td>
             </tr>
         }
     </table>
@@ -104,7 +92,7 @@
 <div>
     <table>
         <tr>
-            <td><h4>Web</h4></td>
+            <td><h4>@GlobalStrings.WEB</h4></td>
             <td></td>
         </tr>
         <tr>
@@ -114,8 +102,8 @@
         @foreach (var item in Model.Webs)
         {
             <tr>
-                <td>@item.Name</td>
-                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "Webs", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "Webs", new {id = item.Id}, null)</td>
+                <td>@Html.ActionLink(item.Name, "Edit", "Webs", new { id = item.Id }, new { style = "color: black;" })</td>
+                <td>&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "Webs", new {id = item.Id}, null)</td>
             </tr>
         }
     </table>
@@ -123,7 +111,7 @@
 <div>
     <table>
         <tr>
-            <td><h4>Сообщения</h4></td>
+            <td><h4>@GlobalStrings.MESS</h4></td>
             <td></td>
             <td></td>
         </tr>
@@ -135,9 +123,9 @@
         @foreach (var item in Model.ClientNotes)
         {
             <tr>
-                <td>@item.DateTime</td>
-                <td>@item.Text</td>
-                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientNotes", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientNotes", new { id = item.Id }, null)</td>
+                <td>@item.DateTime.ToString("dd MMMM yyyy")</td>
+                <td>@Html.ActionLink(item.Text, "Edit", "ClientNotes", new { id = item.Id }, new { style = "color: black;" })</td>
+                <td>&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientNotes", new { id = item.Id }, null)</td>
             </tr>
         }
     </table>
@@ -145,7 +133,7 @@
 <div>
     <table>
         <tr>
-            <td><h4>Телефоны</h4></td>
+            <td><h4>@GlobalStrings.PHONES</h4></td>
             <td></td>
             <td></td>
         </tr>
@@ -160,10 +148,10 @@
         {
             <tr>
                 <td>@item.PhoneType.NameType</td>
-                <td>@item.CountryCode.Name</td>
+                <td>+@item.CountryCode.Code</td>
                 <td>@item.CityCod</td>
-                <td>@item.NamberPhone</td>
-                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientPhones", new {id = item.Id}, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientPhones", new {id = item.Id}, null)</td>
+                <td>@Html.ActionLink(item.NamberPhone, "Edit", "ClientPhones", new { id = item.Id }, new { style = "color: black;" })</td>
+                <td>&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientPhones", new {id = item.Id}, null)</td>
             </tr>
         }
     </table>
@@ -171,7 +159,7 @@
 <div>
     <table>
         <tr>
-            <td><h4>Адреса</h4></td>
+            <td><h4>@GlobalStrings.ADDR</h4></td>
             <td></td>
             <td></td>
         </tr>
@@ -188,10 +176,10 @@
             <tr>
                 <td>@item.CountryCode.Name</td>
                 <td>@item.City</td>
-                <td>@item.Addresse</td>
+                <td>@Html.ActionLink(item.Addresse, "Edit", "ClientAddresses", new { id = item.Id }, new { style = "color: black;" })</td>
                 <td>@item.PostCode</td>
                 <td>@item.Main</td>
-                <td>@Html.ActionLink(GlobalStrings.EDIT, "Edit", "ClientAddresses", new { id = item.Id }, null)&nbsp;|&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientAddresses", new { id = item.Id }, null)</td>
+                <td>&nbsp;@Html.ActionLink(GlobalStrings.DELL, "Delete", "ClientAddresses", new { id = item.Id }, null)</td>
             </tr>
         }
     </table>
