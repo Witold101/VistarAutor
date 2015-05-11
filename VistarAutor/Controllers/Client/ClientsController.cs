@@ -162,16 +162,40 @@ namespace VistarAutor.Controllers.Client
 
         public ActionResult List(int? id)
         {
-            if (id == null)
+            Models.Client.Client client;
+            List<Models.Client.Client> clients;
+            if (id == null || id <= 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                client = db.GetClients().OrderBy(c => c.Name).ToList().First();
+                clients = db.GetClients().OrderBy(c => c.Name).ToList();
             }
-            Models.Client.Client client = db.GetClient(id);
-            if (client == null)
+            else
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                clients = db.GetClients().OrderBy(c=>c.Name).ToList();
+                client = clients.Find(c=>c.Id==id);
             }
-            List<Models.Client.Client> clients = db.GetClients().OrderBy(c=>c.Name).ToList();
+            foreach (Models.Client.Client rezClient in clients)
+            {
+                rezClient.MyPersons = db.MyPersons
+                    .Include(c => c.Department)
+                    .Include(c => c.Position)
+                    .Include(c => c.PersonType)
+                    .Include(c => c.PersonStatuse)
+                    .Include(c => c.PersonMails)
+                    .Include(c => c.PersonPhones)
+                    .ToList().FindAll(c => c.ClientId == rezClient.Id);
+
+                foreach (MyPerson rezMyPerson in rezClient.MyPersons)
+                {
+
+                    rezMyPerson.PersonPhones = db.PersonPhones
+                    .Include(c => c.CountryCode)
+                    .Include(c => c.MyPerson)
+                    .Include(c => c.PhoneType)
+                    .ToList()
+                    .FindAll(c => c.MyPersonId == rezMyPerson.Id);
+                }
+            }
             ViewBag.ClientRez = client;
             return View(clients);
         }

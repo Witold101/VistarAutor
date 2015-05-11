@@ -40,10 +40,13 @@ namespace VistarAutor.Models
         public const string SETUP = "Установки";
         public const string SERCH = "Поиск";
         public const string SORT = "Сортировка";
+        public const string REKVIZIT = "Реквизиты";
+        public const string FILES = "Файлы";
 
         public const string BTL = "Назад к списку";
         public const string CREATE = "Создать";
         public const string EDIT = "Редактировать";
         public const string DELL = "Удалить";
+        public const string PLUS = "+";
     }
 }
