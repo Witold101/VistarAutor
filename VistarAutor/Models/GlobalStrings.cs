@@ -32,6 +32,7 @@ namespace VistarAutor.Models
         public const string KURATOR = "Куратор";
         public const string STATUS = "Статус";
         public const string DATE_REG = "Дата регистрации";
+        public const string DATE = "Дата";
         public const string TYPE = "Тип";
         public const string VID = "Вид";
         public const string DETAILS = "Подробно";

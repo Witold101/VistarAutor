@@ -196,6 +196,7 @@ namespace VistarAutor.Controllers.Client
                     .FindAll(c => c.MyPersonId == rezMyPerson.Id);
                 }
             }
+            client.ClientNotes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
             ViewBag.ClientRez = client;
             return View(clients);
         }
