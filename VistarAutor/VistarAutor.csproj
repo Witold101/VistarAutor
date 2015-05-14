@@ -593,6 +593,7 @@
     <Content Include="Views\PersonPhones\Edit.cshtml" />
     <Content Include="Views\Clients\List.cshtml" />
     <Content Include="Views\Clients\PartialClient.cshtml" />
+    <Content Include="Views\Clients\DialogClientPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

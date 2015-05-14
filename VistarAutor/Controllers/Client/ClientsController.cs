@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using VistarAutor.Models;
@@ -196,26 +197,59 @@ namespace VistarAutor.Controllers.Client
                     .FindAll(c => c.MyPersonId == rezMyPerson.Id);
                 }
             }
-            client.ClientNotes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
+            ViewBag.Notes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
             ViewBag.ClientRez = client;
             return View(clients);
         }
 
         public ActionResult PartialClient(int? id)
         {
-            ViewBag.Message = "Это частичное представление.";
-            //id = 12;
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Models.Client.Client client = db.GetClient(id);
-            //if (client == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
+           if (id == null)
+           {
+               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+           }
+            Models.Client.Client client = db.GetClient(id);
+            if (client == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            client.ClientNotes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
+            ViewBag.Notes = client.ClientNotes;
             return PartialView();
         }
+
+        [HttpPost]
+        public async Task<ActionResult> PartialClient([Bind(Include = "Id,DateTime,Text,ClientId")] ClientNote clientNote)
+        {
+            db.ClientNotes.Add(clientNote);
+            await db.SaveChangesAsync();
+            return RedirectToAction("PartialClient", new {id = clientNote.ClientId});
+        }
+
+        public ActionResult PartialClientEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Models.Client.Client client = db.GetClient(id);
+            if (client == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            client.ClientNotes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
+            ViewBag.Notes = client.ClientNotes;
+            return PartialView();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> PartialClientEdit([Bind(Include = "Id,DateTime,Text,ClientId")] ClientNote clientNote)
+        {
+            db.ClientNotes.Add(clientNote);
+            await db.SaveChangesAsync();
+            return RedirectToAction("PartialClientEdit", new { id = clientNote.ClientId });
+        }
+
 
         protected override void Dispose(bool disposing)
         {
