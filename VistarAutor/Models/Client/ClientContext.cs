@@ -44,10 +44,6 @@ namespace VistarAutor.Models.Client
                         .FindAll(c => c.ClientId == id);
                 client.MyPersons =
                     MyPersons.Include(c => c.Client)
-                        .Include(c => c.Department)
-                        .Include(c => c.PersonStatuse)
-                        .Include(c => c.PersonType)
-                        .Include(c => c.Position)
                         .Include(c => c.PersonMails)
                         .Include(c => c.PersonPhones)
                         .ToList()

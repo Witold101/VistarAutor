@@ -17,6 +17,8 @@ namespace VistarAutor.Models
         public const string NAME = "Наименование";
         public const string NAME_SL = "Краткое наименование";
         public const string NAME_FULL = "Полное наименование";
+        public const string F_NAME = "Имя";
+        public const string L_NAME = "Фамилия";
         public const string LAST = "Последние";
         public const string SELECT = "Выбранные";
         
@@ -33,6 +35,7 @@ namespace VistarAutor.Models
         public const string STATUS = "Статус";
         public const string DATE_REG = "Дата регистрации";
         public const string DATE = "Дата";
+        public const string DATE_BE = "Дата рождения";
         public const string TYPE = "Тип";
         public const string VID = "Вид";
         public const string DETAILS = "Подробно";
@@ -43,6 +46,11 @@ namespace VistarAutor.Models
         public const string SORT = "Сортировка";
         public const string REKVIZIT = "Реквизиты";
         public const string FILES = "Файлы";
+        public const string PHOTO = "Фото";
+        public const string DEPARTMENT = "Отдел";
+        public const string POSITION = "Должность";
+        public const string ID = "Id";
+
 
         public const string BTL = "Назад к списку";
         public const string CREATE = "Создать";

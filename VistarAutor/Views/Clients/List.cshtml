@@ -34,28 +34,6 @@
                         </td>
                         <td style="color: darkslategray">@client.FullName</td>
                     </tr>
-                    <!-- foreach (var contact in client.MyPersons)
-                    {
-                    <tr>
-                        <td></td>
-                        <td><i class="glyphicon glyphicon-user"></i></td>
-                        <td>Html.ActionLink(contact.Name + " " + contact.LastName, "List", null, new {style = "color: grey"})</td>
-                        <td>
-                            if (contact.PersonPhones.Any())
-                            {
-                            <h5>
-                                <span class="label label-default">
-                                                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                                        +contact.PersonPhones.First().CountryCode.Code
-                                        contact.PersonPhones.First().CityCod
-                                        contact.PersonPhones.First().NamberPhone
-                                        </span>
-                            </h5>
-                            }
-                        </td>
-                    </tr>
-                    }
-                    -->
                 }
             </table>
         </div>
@@ -142,6 +120,7 @@
                         <ul>
                             @foreach (PersonPhone phone in contact.PersonPhones)
                             {
+                               
                                 <li style="list-style-type: none">
                                     <h5>
                                         <span class="label label-default">
@@ -190,7 +169,7 @@
                                             <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
                                             @if (contact.Position != null)
                                             {
-                                                @contact.Position.Name
+                                                @contact.Position
                                                 ;
                                             }
                                         </span>

@@ -13,8 +13,6 @@ namespace VistarAutor.Models.Person
         public DbSet<MyPerson> MyPersons { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Position> Positions { get; set; }
-        public DbSet<PersonType> PersonTypes { get; set; }
-        public DbSet<PersonStatuse> PersonStatuses { get; set; }
         public DbSet<Client.Client> Clients { get; set; }
         public DbSet<PersonMail> PersonMails { get; set; }
         public DbSet<PersonPhone> PersonPhones { get; set; }
@@ -24,10 +22,6 @@ namespace VistarAutor.Models.Person
         public List<MyPerson> GerPersons(int id)
         {
             return MyPersons
-                .Include(c => c.Department)
-                .Include(c => c.Position)
-                .Include(c => c.PersonType)
-                .Include(c => c.PersonStatuse)
                 .Include(c => c.Client)
                 .Include(c => c.PersonMails)
                 .Include(c => c.PersonPhones)
@@ -39,10 +33,6 @@ namespace VistarAutor.Models.Person
         {
             MyPerson myPerson= MyPersons
                 .Include(c => c.PersonMails)
-                .Include(c => c.Department)
-                .Include(c => c.Position)
-                .Include(c => c.PersonType)
-                .Include(c => c.PersonStatuse)
                 .Include(c => c.Client)
                 .First(c => c.Id == id);
             myPerson.PersonPhones = PersonPhones

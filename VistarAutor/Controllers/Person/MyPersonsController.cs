@@ -23,10 +23,6 @@ namespace VistarAutor.Controllers.Person
             if (id != null)
             {
                 ViewBag.ClientId = id;
-                ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name");
-                ViewBag.PersonStatuseId = new SelectList(db.PersonStatuses, "Id", "Name");
-                ViewBag.PersonTypeId = new SelectList(db.PersonTypes, "Id", "Name");
-                ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name");
                 return View();
             }
             else
@@ -40,7 +36,7 @@ namespace VistarAutor.Controllers.Person
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,LastName,PersonNamber,Birthday,Photo,DepartmentId,PositionId,PersonTypeId,PersonStatuseId,ClientId,Note")] MyPerson myPerson)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,LastName,PersonNamber,Birthday,Photo,Department,Position,ClientId,Note")] MyPerson myPerson)
         {
             if (ModelState.IsValid)
             {
@@ -48,12 +44,7 @@ namespace VistarAutor.Controllers.Person
                 await db.SaveChangesAsync();
                 return RedirectToAction("Details", "Clients", new { id = myPerson.ClientId });
             }
-
             ViewBag.ClientId = myPerson.ClientId;
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", myPerson.DepartmentId);
-            ViewBag.PersonStatuseId = new SelectList(db.PersonStatuses, "Id", "Name", myPerson.PersonStatuseId);
-            ViewBag.PersonTypeId = new SelectList(db.PersonTypes, "Id", "Name", myPerson.PersonTypeId);
-            ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name", myPerson.PositionId);
             return View(myPerson);
         }
 
@@ -64,16 +55,12 @@ namespace VistarAutor.Controllers.Person
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MyPerson myPerson =  db.GePerson(id);
+            MyPerson myPerson = db.GePerson(id);
             if (myPerson == null)
             {
                 return HttpNotFound();
             }
             ViewBag.ClientId = myPerson.ClientId;
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", myPerson.DepartmentId);
-            ViewBag.PersonStatuseId = new SelectList(db.PersonStatuses, "Id", "Name", myPerson.PersonStatuseId);
-            ViewBag.PersonTypeId = new SelectList(db.PersonTypes, "Id", "Name", myPerson.PersonTypeId);
-            ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name", myPerson.PositionId);
             return View(myPerson);
         }
 
@@ -82,7 +69,7 @@ namespace VistarAutor.Controllers.Person
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,LastName,PersonNamber,Birthday,Photo,DepartmentId,PositionId,PersonTypeId,PersonStatuseId,ClientId,Note")] MyPerson myPerson)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,LastName,PersonNamber,Birthday,Photo,Department,Position,ClientId,Note")] MyPerson myPerson)
         {
             if (ModelState.IsValid)
             {
@@ -91,10 +78,6 @@ namespace VistarAutor.Controllers.Person
                 return RedirectToAction("Details", "Clients", new { id = myPerson.ClientId });
             }
             ViewBag.ClientId = myPerson.ClientId;
-            ViewBag.DepartmentId = new SelectList(db.Departments, "Id", "Name", myPerson.DepartmentId);
-            ViewBag.PersonStatuseId = new SelectList(db.PersonStatuses, "Id", "Name", myPerson.PersonStatuseId);
-            ViewBag.PersonTypeId = new SelectList(db.PersonTypes, "Id", "Name", myPerson.PersonTypeId);
-            ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name", myPerson.PositionId);
             return View(myPerson);
         }
 

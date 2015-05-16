@@ -14,14 +14,8 @@ namespace VistarAutor.Models.Person
         public string PersonNamber { get; set; }
         public DateTime Birthday { get; set; }
         public int Photo { get; set; }
-        public int DepartmentId { get; set; }
-        public Department Department { get; set; }
-        public int PositionId { get; set; }
-        public Position Position { get; set; }
-        public int PersonTypeId { get; set; }
-        public PersonType PersonType { get; set; }
-        public int PersonStatuseId { get; set; }
-        public PersonStatuse PersonStatuse { get; set; }
+        public string Department { get; set; }
+        public string Position { get; set; }
         public int ClientId { get; set; }
         public Client.Client Client { get; set; }
         public string Note { get; set; }

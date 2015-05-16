@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using VistarAutor.Models;
 using VistarAutor.Models.Client;
+using VistarAutor.Models.Main;
 using VistarAutor.Models.Person;
 
 namespace VistarAutor.Controllers.Client
@@ -17,6 +18,7 @@ namespace VistarAutor.Controllers.Client
     public class ClientsController : Controller
     {
         private ClientContext db = new ClientContext();
+        private MyPersonContext dbPerson=new MyPersonContext();
 
         // GET: Clients
         public ActionResult Index(int? id)
@@ -178,10 +180,6 @@ namespace VistarAutor.Controllers.Client
             foreach (Models.Client.Client rezClient in clients)
             {
                 rezClient.MyPersons = db.MyPersons
-                    .Include(c => c.Department)
-                    .Include(c => c.Position)
-                    .Include(c => c.PersonType)
-                    .Include(c => c.PersonStatuse)
                     .Include(c => c.PersonMails)
                     .Include(c => c.PersonPhones)
                     .ToList().FindAll(c => c.ClientId == rezClient.Id);
@@ -198,7 +196,9 @@ namespace VistarAutor.Controllers.Client
                 }
             }
             ViewBag.Notes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
+        
             ViewBag.ClientRez = client;
+            ViewBag.ClientId = id;
             return View(clients);
         }
 

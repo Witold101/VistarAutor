@@ -1,100 +1,56 @@
 ﻿@using VistarAutor.Models
-
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="container-fluid">
-                @using (Ajax.BeginForm("PartialClientEdit", new AjaxOptions { UpdateTargetId = "cont1", HttpMethod = "POST" }))
+<dd class="form-horizontal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                @using (Ajax.BeginForm("PartialClientEdit", new AjaxOptions {UpdateTargetId = "cont1", HttpMethod = "POST"}))
                 {
                     @Html.AntiForgeryToken()
+                    <hr/>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <label for="date-name" class="control-label">@GlobalStrings.F_NAME:</label>
+                        </dt>
+                        <dd >
+                            <input type="text" name="ClName" class="form-control input-sm" style="width:100%" id="cl_name">
+                        </dd>
+                       
+                        <dt>
+                            <label for="date-name" class="control-label">@GlobalStrings.DATE_BE:</label>
+                        </dt>
 
-                    <div class="form-horizontal">
-                        <hr />
-                        <div class="form-group">
-                            <label for="date-name" class="control-label">@GlobalStrings.NAME:</label>
-                            <input type="text" name="ClName" class="form-control" style="width: auto" id="cl_name">
-                        </div>
+                        <dd>
+                            <input type="text" name="ClBetDay" class="form-control input-sm" style="width: auto" id="cl_betday">
+                        </dd>
 
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="date-name" class="control-label">@GlobalStrings.LAST:</label>
-                                <input type="text" name="ClLName" class="form-control" style="width: auto" id="cl_lname">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="form-group">
-                                <label for="date-name" class="control-label">@GlobalStrings.LAST:</label>
-                                <input type="text" name="ClPersonNamber" class="form-control" style="width: auto" id="cl_persnamber">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="date-name" class="control-label">@GlobalStrings.LAST:</label>
-                                <input type="text" name="ClBetDay" class="form-control" style="width: auto" id="cl_betday">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="date-name" class="control-label">@GlobalStrings.LAST:</label>
-                                <input type="text" name="ClPhoto" class="form-control" style="width: auto" id="cl_photo">
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown trigger
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                            </ul>
-                        </div>
-<!--
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                Html.DropDownList("DepartmentId", null, htmlAttributes: new { class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                Html.DropDownList("PositionId", null, htmlAttributes: new { class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                Html.DropDownList("PersonTypeId", null, htmlAttributes: new { class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                Html.DropDownList("PersonStatuseId", null, htmlAttributes: new { class = "form-control" })
-                            </div>
-                        </div>
-
-                        Html.Hidden("ClientId", (int)ViewBag.ClientId)
--->
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="date-name" class="control-label">@GlobalStrings.NOTE:</label>
-                                <input type="text" name="ClNote" class="form-control" style="width: auto" id="cl_note">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
+                        <dt>
+                            <label for="date-name" class="control-label">@GlobalStrings.DEPARTMENT:</label>
+                        </dt>
+                        <dd>
+                            <input type="text" name="Department" class="form-control input-sm" style="width: auto" id="cl_betday">
+                        </dd>
+                        <dt>
+                            <label for="date-name" class="control-label">@GlobalStrings.POSITION:</label>
+                        </dt>
+                        <dd>
+                            <input type="text" name="Position" class="form-control input-sm" style="width: auto" id="cl_betday">
+                        </dd>
+                        @Html.Hidden("ClientId", (int) ViewBag.ClientRez.Id)
+                        <dt>
+                            <label for="date-name" class="control-label">@GlobalStrings.NOTE:</label>
+                        </dt>
+                        <dd>
+                            <input type="text" name="ClNote" class="form-control input-sm" style="width:100%" id="cl_note">
+                        </dd>
+                    </dl>
+                    
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default"/>
                         </div>
                     </div>
                 }
             </div>
         </div>
     </div>
-</div>
+</dd>

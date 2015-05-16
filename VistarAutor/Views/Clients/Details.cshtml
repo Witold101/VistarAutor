@@ -48,7 +48,7 @@
             {
                 <tr style="font-size: 12px">
                     <td style="width: 20%; padding: 5px">@Html.ActionLink(@person.Name +" "+@person.LastName , "Edit", "MyPersons", new { id = person.Id }, null)</td>
-                    <td style="width: 10%;padding: 5px">@person.Position.Name</td>
+                    <td style="width: 10%;padding: 5px">@person.Position</td>
                     <td style="width: 25%; padding: 5px">@if (person.PersonPhones.Count(c=>c.Main==true)>0)
                                                          {<text>+</text>
                                                              @person.PersonPhones.First(c => c.Main == true).CountryCode.Code<text></text>
