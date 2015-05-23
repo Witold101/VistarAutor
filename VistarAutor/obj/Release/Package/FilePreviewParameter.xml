@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="witold202-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Projects\\C\#\\VistarAutor\\VistarAutor\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Projects\\C\#\\VistarAutor\\VistarAutor\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="VistarDb-Web.config Connection String" description="" value="Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Projects\C#\VistarAutor\VistarAutor\App_Data\VistarDb.mdf;Integrated Security=True;Connect Timeout=30" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Projects\\C\#\\VistarAutor\\VistarAutor\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='VistarDb']/@connectionString" />
+  </parameter>
+</parameters>

@@ -460,6 +460,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\Pionwit.pubxml" />
+    <None Include="Properties\PublishProfiles\Vistar.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -481,6 +483,7 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vi-dialog.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -580,6 +583,8 @@
     <Content Include="Views\Clients\List.cshtml" />
     <Content Include="Views\Clients\PartialClient.cshtml" />
     <Content Include="Views\Clients\DialogClientPartial.cshtml" />
+    <Content Include="Views\Clients\PartialClientEdit.cshtml" />
+    <Content Include="Views\Clients\PartialDellPerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

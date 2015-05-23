@@ -1,0 +1,23 @@
+﻿@using VistarAutor.Models
+
+@{
+    ViewBag.Title = "Setup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>НАСТРОЙКИ</h3>
+<table>
+    <tr><td><h4>Настройки пользователей</h4></td></tr>
+    <tr><td>@Html.ActionLink("Редактирование установок пользователей","SetupListEmployee","Home")</td></tr>
+    <tr><td><h4>Начальные установки</h4></td></tr>
+    <tr><td>@Html.ActionLink("Отделы", "Index", "Departments")</td></tr>
+    <tr><td>@Html.ActionLink("Должности", "Index", "Positions")</td></tr>
+    <tr><td>@Html.ActionLink("Страны", "Index", "CountryCodes")</td></tr>
+    <tr><td>@Html.ActionLink("Типы телефонов", "Index", "PhoneTypes")</td></tr>
+    <tr><td><h4>Клиенты установки</h4></td></tr>
+    <tr><td>@Html.ActionLink("Типы клиентов", "Index", "TypeClients")</td></tr>
+    <tr><td>@Html.ActionLink("Статусы клиентов", "Index", "Statuses")</td></tr>
+    <tr><td><h4>Контактные лица установки</h4></td></tr>
+    <tr><td></td></tr>
+</table>
+

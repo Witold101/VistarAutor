@@ -1,0 +1,36 @@
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Person.MyPerson
+
+<div class="modal fade" id="dellPerson" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @using (Ajax.BeginForm("PartialDellPerson", "Clients", null, new AjaxOptions { UpdateTargetId = "cont1", HttpMethod = "POST", OnSuccess = "close_di" }, null))
+    {
+        <div class="form-horizontal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        HIDER
+                    </div>
+                    <div class="modal-body">
+                        <h3>Дописать</h3>
+                        <div> @Model.Name </div>
+                        <input type="hidden" name="Id" id="hidenDellPerson" value=@Model.Id />
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit">@GlobalStrings.SIGN</button>
+                            </div>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="reset" id="btnDellPerson">@GlobalStrings.DELL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+                       
+           
+           

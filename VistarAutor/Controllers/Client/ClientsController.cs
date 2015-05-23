@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -18,7 +19,6 @@ namespace VistarAutor.Controllers.Client
     public class ClientsController : Controller
     {
         private ClientContext db = new ClientContext();
-        private MyPersonContext dbPerson=new MyPersonContext();
 
         // GET: Clients
         public ActionResult Index(int? id)
@@ -226,6 +226,45 @@ namespace VistarAutor.Controllers.Client
             return RedirectToAction("PartialClient", new {id = clientNote.ClientId});
         }
 
+        public ActionResult PartialDellPerson(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            MyPerson person = db.MyPersons.Find(id);
+            person.Client = db.Clients.Find(person.ClientId);
+            if (person == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return PartialView(person);
+        }
+
+        // POST: MyPersons/Delete/5
+        [HttpPost]
+        public async Task<ActionResult> PartialDellPerson([Bind(Include = "Id")]int id)
+        {
+            MyPerson myPerson = await db.MyPersons.FindAsync(id);
+            int? tempId = myPerson.ClientId;
+            db.MyPersons.Remove(myPerson);
+            await db.SaveChangesAsync();
+            return RedirectToAction("List", "Clients", new { id = tempId });
+        }
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> PartialClientEdit([Bind(Include = "Id,Name,ClientId,Birthday,Department,Position,Note")] MyPerson person)
+        {
+            //SqlCommand command = new SqlCommand("INSERT INTO Students(StudentName) VALUES('ddddd') SELECT SCOPE_IDENTITY()", con);
+            //int a = Convert.ToInt16(command.ExecuteScalar());
+
+            db.MyPersons.Add(person);
+            await db.SaveChangesAsync();
+            return RedirectToAction("PartialClientEdit", new { id = person.ClientId });
+        }
+
         public ActionResult PartialClientEdit(int? id)
         {
             if (id == null)
@@ -237,19 +276,9 @@ namespace VistarAutor.Controllers.Client
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            client.ClientNotes = client.ClientNotes.OrderByDescending(c => c.DateTime).ToList();
-            ViewBag.Notes = client.ClientNotes;
+            ViewBag.ClientRez = client;
             return PartialView();
         }
-
-        [HttpPost]
-        public async Task<ActionResult> PartialClientEdit([Bind(Include = "Id,DateTime,Text,ClientId")] ClientNote clientNote)
-        {
-            db.ClientNotes.Add(clientNote);
-            await db.SaveChangesAsync();
-            return RedirectToAction("PartialClientEdit", new { id = clientNote.ClientId });
-        }
-
 
         protected override void Dispose(bool disposing)
         {

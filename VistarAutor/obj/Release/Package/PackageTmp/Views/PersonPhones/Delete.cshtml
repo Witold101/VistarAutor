@@ -1,0 +1,72 @@
+﻿@using VistarAutor.Models
+@model VistarAutor.Models.Person.PersonPhone
+
+@{
+    ViewBag.Title = GlobalStrings.DELL;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@GlobalStrings.DELL</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryCode.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryCode.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyPerson.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyPerson.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneType.NameType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneType.NameType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityCod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityCod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamberPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamberPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Main)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Main)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink(GlobalStrings.BTL, "Edit", "MyPersons", new { id = @Model.MyPersonId }, null)
+        </div>
+    }
+</div>

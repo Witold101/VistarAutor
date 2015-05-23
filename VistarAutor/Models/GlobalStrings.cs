@@ -42,8 +42,7 @@ namespace VistarAutor.Models
         public const string CONTACTS = "Контакты";
         public const string CONTACT = "Контакт";
         public const string SETUP = "Установки";
-        public const string SERCH = "Поиск";
-        public const string SORT = "Сортировка";
+        
         public const string REKVIZIT = "Реквизиты";
         public const string FILES = "Файлы";
         public const string PHOTO = "Фото";
@@ -51,7 +50,9 @@ namespace VistarAutor.Models
         public const string POSITION = "Должность";
         public const string ID = "Id";
 
-
+        public const string SIGN = "Принять";
+        public const string SORT = "Сортировка";
+        public const string SERCH = "Поиск";
         public const string BTL = "Назад к списку";
         public const string CREATE = "Создать";
         public const string EDIT = "Редактировать";

@@ -10,10 +10,7 @@ namespace VistarAutor.Models.Person
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string LastName { get; set; }
-        public string PersonNamber { get; set; }
-        public DateTime Birthday { get; set; }
-        public int Photo { get; set; }
+        public DateTime? Birthday { get; set; }
         public string Department { get; set; }
         public string Position { get; set; }
         public int ClientId { get; set; }
