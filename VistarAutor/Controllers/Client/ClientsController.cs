@@ -246,10 +246,10 @@ namespace VistarAutor.Controllers.Client
         public async Task<ActionResult> PartialDellPerson([Bind(Include = "Id")]int id)
         {
             MyPerson myPerson = await db.MyPersons.FindAsync(id);
-            int? tempId = myPerson.ClientId;
+            int tempId = myPerson.ClientId;
             db.MyPersons.Remove(myPerson);
             await db.SaveChangesAsync();
-            return RedirectToAction("List", "Clients", new { id = tempId });
+            return RedirectToAction("PartialClientEdit", new { id = tempId });
         }
 
 
@@ -276,6 +276,22 @@ namespace VistarAutor.Controllers.Client
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+             client.MyPersons = db.MyPersons
+                    .Include(c => c.PersonMails)
+                    .Include(c => c.PersonPhones)
+                    .ToList().FindAll(c => c.ClientId == client.Id);
+
+                foreach (MyPerson rezMyPerson in client.MyPersons)
+                {
+
+                    rezMyPerson.PersonPhones = db.PersonPhones
+                    .Include(c => c.CountryCode)
+                    .Include(c => c.MyPerson)
+                    .Include(c => c.PhoneType)
+                    .ToList()
+                    .FindAll(c => c.MyPersonId == rezMyPerson.Id);
+                }
+            
             ViewBag.ClientRez = client;
             return PartialView();
         }

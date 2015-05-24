@@ -1,12 +1,14 @@
 ﻿function close_dialog() {
-    $("#btn22").on("click", function () {
         $("#clientModal").modal("hide");
-    });
 }
 
 function close_di() {
     $("#clientModal").modal("hide");
 }
+function close_dell() {
+    $("#dellPerson").modal("hide");
+}
+
 
 function clear_client() {
     $("#cl_name").val("");
@@ -17,8 +19,11 @@ function clear_client() {
     close_di();
 }
 
-function dell_person() {
-    $("#btnDellPerson").on("click", function() {
-
-    });
+function dell_person(id_person, name_person) {
+    $("#hidenDellPersonId").val(id_person)
+    $("#hidenNamePerson").val(name_person)
 }
+
+$("#dellPersonOk").on("click", function () {
+    $("#dellPerson").modal("hide");
+});
