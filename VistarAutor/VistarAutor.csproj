@@ -585,6 +585,9 @@
     <Content Include="Views\Clients\DialogClientPartial.cshtml" />
     <Content Include="Views\Clients\PartialClientEdit.cshtml" />
     <Content Include="Views\Clients\PartialDellPerson.cshtml" />
+    <Content Include="Views\Clients\PartialEditPerson.cshtml" />
+    <Content Include="Views\Clients\PartialListClients.cshtml" />
+    <Content Include="Views\Clients\PartialClientPresination.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

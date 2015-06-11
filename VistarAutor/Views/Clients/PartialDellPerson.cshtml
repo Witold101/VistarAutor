@@ -7,20 +7,15 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <label id="hidenNamePerson"></label>
+                        <label> Подтвердите удаление:</label>
+                            <div id="HdellPerson"></div>
                     </div>
                     <div class="modal-body">
-                        <h3>Дописать</h3>
-                        
-                        <input type="text" name="Id" id="hidenDellPersonId" />
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" id="dellPersonOk">@GlobalStrings.SIGN</button>
-                            </div>
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="reset" id="btnDellPerson">@GlobalStrings.DELL</button>
-                            </div>
-                        </div>
+                        <input type="hidden" name="Id" id="hidenDellPersonId"/>
+                        <button type="submit" class="btn btn-default" id="dellPersonOk">@GlobalStrings.DELL</button>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">@GlobalStrings.CANSEL</button>
+
                     </div>
                 </div>
             </div>

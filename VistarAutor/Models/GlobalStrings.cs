@@ -57,6 +57,8 @@ namespace VistarAutor.Models
         public const string CREATE = "Создать";
         public const string EDIT = "Редактировать";
         public const string DELL = "Удалить";
+        public const string CANSEL = "Отмена";
         public const string PLUS = "+";
+        public const string LIST = "Список";
     }
 }

@@ -27,13 +27,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(GlobalStrings.CONTACTS, "Index", "Clients")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            @GlobalStrings.CONTACTS <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink(GlobalStrings.CONTACT, "Index", "Clients")</li>
+                            <li>@Html.ActionLink(GlobalStrings.LIST, "List", "Clients")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("О программе", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
                     <li>@if (User.IsInRole(GlobalStrings.SUPER_ADMIN))
-                    {
-                        @Html.ActionLink(GlobalStrings.SETUP, "Setup", "Home")
-                    }
+                        {
+                            @Html.ActionLink(GlobalStrings.SETUP, "Setup", "Home")
+                        }
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

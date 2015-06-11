@@ -177,6 +177,10 @@ namespace VistarAutor.Controllers.Client
                 clients = db.GetClients().OrderBy(c=>c.Name).ToList();
                 client = clients.Find(c=>c.Id==id);
             }
+            if (client == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             foreach (Models.Client.Client rezClient in clients)
             {
                 rezClient.MyPersons = db.MyPersons
@@ -221,8 +225,11 @@ namespace VistarAutor.Controllers.Client
         [HttpPost]
         public async Task<ActionResult> PartialClient([Bind(Include = "Id,DateTime,Text,ClientId")] ClientNote clientNote)
         {
-            db.ClientNotes.Add(clientNote);
-            await db.SaveChangesAsync();
+            if (clientNote.Text.Trim() != "")
+            {
+                db.ClientNotes.Add(clientNote);
+                await db.SaveChangesAsync();
+            }
             return RedirectToAction("PartialClient", new {id = clientNote.ClientId});
         }
 

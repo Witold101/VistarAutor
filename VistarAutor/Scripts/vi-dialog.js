@@ -9,6 +9,11 @@ function close_dell() {
     $("#dellPerson").modal("hide");
 }
 
+function close_mess() {
+    $("#message-text").val("");
+    $("#messModal").modal("hide");
+}
+
 
 function clear_client() {
     $("#cl_name").val("");
@@ -19,9 +24,9 @@ function clear_client() {
     close_di();
 }
 
-function dell_person(id_person, name_person) {
-    $("#hidenDellPersonId").val(id_person)
-    $("#hidenNamePerson").val(name_person)
+function dell_person(idPerson, namePerson) {
+    $("#hidenDellPersonId").val(idPerson);
+    $("#HdellPerson").html(namePerson);
 }
 
 $("#dellPersonOk").on("click", function () {
