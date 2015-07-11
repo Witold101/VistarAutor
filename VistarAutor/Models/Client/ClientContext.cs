@@ -26,6 +26,7 @@ namespace VistarAutor.Models.Client
         public DbSet<ClientAddresse> ClientAddresses { get; set; }
         public DbSet<MyPerson> MyPersons { get; set; }
         public DbSet<PersonPhone> PersonPhones { get; set; }
+        public DbSet<PersonMail> PersonMails { get; set; }
 
         public Client GetClient(int? id)
         {

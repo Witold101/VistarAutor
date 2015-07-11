@@ -264,9 +264,6 @@ namespace VistarAutor.Controllers.Client
         [HttpPost]
         public async Task<ActionResult> PartialClientEdit([Bind(Include = "Id,Name,ClientId,Birthday,Department,Position,Note")] MyPerson person)
         {
-            //SqlCommand command = new SqlCommand("INSERT INTO Students(StudentName) VALUES('ddddd') SELECT SCOPE_IDENTITY()", con);
-            //int a = Convert.ToInt16(command.ExecuteScalar());
-
             db.MyPersons.Add(person);
             await db.SaveChangesAsync();
             return RedirectToAction("PartialClientEdit", new { id = person.ClientId });
@@ -301,6 +298,28 @@ namespace VistarAutor.Controllers.Client
             
             ViewBag.ClientRez = client;
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult PartialEditPerson([Bind(Include = "Id")] int? id)
+        {
+            id = 17;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            MyPerson person = db.MyPersons.Find(id);
+            if (person == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            person.PersonPhones = db.PersonPhones
+                   .Include(c => c.CountryCode)
+                   .Include(c => c.PhoneType)
+                   .ToList().FindAll(c => c.MyPersonId == person.Id);
+            person.PersonMails = db.PersonMails
+                   .ToList().FindAll(c => c.MyPersonId == person.Id);
+            return PartialView(person);
         }
 
         protected override void Dispose(bool disposing)
