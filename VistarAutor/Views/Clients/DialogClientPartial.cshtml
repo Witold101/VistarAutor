@@ -1,6 +1,6 @@
 ﻿@using VistarAutor.Models
 <div class="modal fade" id="clientModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    @using (Ajax.BeginForm("PartialClientEdit", null, new AjaxOptions { UpdateTargetId = "cont1", HttpMethod = "POST", OnSuccess = "clear_client" }, new { @id = "myFormCl" }))
+    @using (Ajax.BeginForm("PartialClientEdit",null, new AjaxOptions { UpdateTargetId = "cont1", HttpMethod = "POST", OnSuccess = "clear_client" }, new { @id = "myFormCl" }))
     {
         <div class="form-horizontal">
             <div class="modal-dialog">
